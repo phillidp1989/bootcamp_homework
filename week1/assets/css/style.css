@@ -198,6 +198,7 @@ p {
     text-align: center;
 }
 
-.footer h2 {
+/* changed heading tag from h2 to h4 to correspond with change to html code */
+.footer h4 {
     font-size: 20px;
 }
