@@ -15,6 +15,8 @@
 
 <body class="d-flex flex-column">
 
+<!-- Header and navbar specific for the mobile viewport -->
+
     <div id="isMobile">
     <header class="mobile-header-brand">
         <p>Dan Phillips</p>
@@ -31,6 +33,8 @@
     </nav>
     </div>
 
+<!-- Header and navbar specific to desktop viewport -->
+
     <div class= "desktopContainer" id="is-desktop">
             <p class="desktop-header-brand">Dan Phillips</p>
         <nav class="desktop-navbar">
@@ -44,10 +48,10 @@
         </nav>
     </div>
 
-       
+    <!-- The below container is a responsive bootstrap container which is 100% width until the specified break point -->
     
     <div class="container-md">
-        <div class="row">
+        <div class="row"> <!--Use of Bootstrap grid system to layout website-->
             <div class="col-12">
                 <h2>About Me</h2>
                 <hr>
@@ -63,7 +67,14 @@
 
                 <p>My name is Dan Phillips and I am an aspiring full-stack developer. I currently work at the University of Birmingham as Head of the Curriculum Management Team. I have worked at the University since 2010 and enjoy working with data. Throughout my time at the university I have worked closely with developers in the organisation's IT Services department to collaborate in the development of new staff and student-focussed applications, making use of the curriculum data I work to maintain. It is though these interactions, as well as a burgeoning interest in coding and software development, I have decided to undertake a coding bootcamp to gain a whole set of new skills which will set me up for working in an ever-expanding sector.<br><br>
 
-                I have a keen interest on back-end development as data is where my interests lie and how this data is stored and called upon to provide users of applications a user friendly presentation of this data. Despite this, I have thoroughly enjoyed learning about front-end development in the first few weeks of this bootcamp and it is nice to see the tangible outputs of front-end development.
+                I have a keen interest on back-end development as data is where my interests lie and how this data is stored and called upon to provide users of applications a user friendly presentation of this data. Despite this, I have thoroughly enjoyed learning about front-end development in the first few weeks of this bootcamp and it is nice to see the tangible outputs of front-end development.<br><br>
+
+                Find links to my social media profiles below:
+                <ul>
+                    <li><a href="https://www.facebook.com/daniel.phillips.71653" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/home" target="_blank">Twitter</a></li>
+                    <li><a href="https://www.linkedin.com/in/daniel-phillips-65775485/" target="_blank">LinkedIn</a></li>
+                </ul>
                 </p>
 
             </article>
@@ -71,19 +82,14 @@
         </div>
     </div>
 
-    
+    <!-- Footer - utilising bootsrap components and styling -->
+
         <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
           <div class="container text-center">
             <small>Copyright &copy;</small>
           </div>
         </footer>
      
-
-
-
-
-
-
 </body>
 
 </html>
