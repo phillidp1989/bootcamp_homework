@@ -1,3 +1,6 @@
+/* Styling is based on a mobile-first approach and media queries are added to the bottom of the css file to amend styling based on largewr screens */
+
+
 body {
     background-color: gainsboro;
     
@@ -52,15 +55,7 @@ body {
     
 }
 
-/* Addition of pipes between nav links */
 
-.pipe {
-    height: 30px;
-    margin-top: 10px;
-    padding-top: 5px;
-    width: 1px;
-    background-color: grey;
-}
 
 /* Styling of desktop navbar */
 
@@ -120,7 +115,19 @@ body {
     
 }
 
+/* Addition of pipes between nav links */
 
+.pipe {
+    height: 30px;
+    margin-top: 10px;
+    padding-top: 5px;
+    width: 1px;
+    background-color: grey;
+
+}
+
+/* End of header and navbar styling */
+/* Start of main body styling */
 
 
  .container-md {
@@ -156,16 +163,11 @@ body {
     border-top: 5px solid #20B2AA;
     position: fixed;
     bottom: 0;
-
- }
-
- footer {
-    border-top: 5px solid #20B2AA;
-    position: fixed;
-    bottom: 0;
     width: 100%;
 
  }
+
+ /* Media queries to adjust styling for larger screens */
 
  @media screen and (min-width: 768px) {
 
