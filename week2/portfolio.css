@@ -1,3 +1,6 @@
+/* Styling is based on a mobile-first approach and media queries are added to the bottom of the css file to amend styling based on largewr screens */
+
+
 body {
     background-color: gainsboro
 
@@ -52,14 +55,7 @@ body {
     
 }
 
-/* Addition of pipes between nav links */
 
-.pipe {
-    height: 30px;
-    margin-top: 10px;
-    width: 1px;
-    background-color: grey;
-}
 
 /* Styling of desktop navbar */
 
@@ -119,8 +115,17 @@ body {
     
 }
 
+/* Addition of pipes between nav links */
 
+.pipe {
+    height: 30px;
+    margin-top: 10px;
+    width: 1px;
+    background-color: grey;
+}
 
+/* End of header and navbar styling */
+/* Start of main body styling */
 
  .container-md {
      background-color: white;
@@ -140,6 +145,8 @@ body {
 
  }
 
+ /* Setting a consistent image height for all images to help alignment */
+
  .column img {
      height: 250px;
      
@@ -149,6 +156,30 @@ body {
      padding-right: 5px;
      padding-left: 5px;
  }
+
+     /* Image grid */
+
+     .row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+      }
+
+      /* The below line of code splits the photo grid into two equal columns and the passing to the left and right provides spacing between the columns */
+      
+      .column {
+        flex: 50%;
+        max-width: 50%;
+        padding: 0 10px;
+      }
+
+      .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+      }
+
+ /* Setting the position and styling of the text banners across each of the images */
 
  .websiteImg {
      position: relative;
@@ -161,10 +192,10 @@ body {
      text-align: center;
      background-color: #20B2AA;
      color: white;
-    font-family: 'Cantata One', serif;
-    height: 40px;
-    line-height: 40px;
-    font-size: 20px;
+     font-family: 'Cantata One', serif;
+     height: 40px;
+     line-height: 40px;
+     font-size: 20px;
     
     
     
@@ -181,10 +212,10 @@ body {
     text-align: center;
     background-color: #20B2AA;
     color: white;
-   font-family: 'Cantata One', serif;
-   height: 40px;
-   line-height: 40px;
-   font-size: 20px;
+    font-family: 'Cantata One', serif;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
    
    
 }
@@ -200,10 +231,10 @@ body {
     text-align: center;
     background-color: #20B2AA;
     color: white;
-   font-family: 'Cantata One', serif;
-   height: 40px;
-   line-height: 40px;
-   font-size: 20px;
+    font-family: 'Cantata One', serif;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
    
    
 }
@@ -219,10 +250,10 @@ body {
     text-align: center;
     background-color: #20B2AA;
     color: white;
-   font-family: 'Cantata One', serif;
-   height: 40px;
-   line-height: 40px;
-   font-size: 20px;
+    font-family: 'Cantata One', serif;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
    
    
 }
@@ -238,14 +269,16 @@ body {
     text-align: center;
     background-color: #20B2AA;
     color: white;
-   font-family: 'Cantata One', serif;
-   height: 40px;
-   line-height: 40px;
-   font-size: 20px;
-   
-   
+    font-family: 'Cantata One', serif;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+      
 }
+
+/* End of text banner styling */
   
+/* Footer styling */
  
 
  footer {
@@ -254,6 +287,8 @@ body {
     bottom: 0;
 
  }
+
+/* Media queries to adjust styling for larger screens */
 
  @media screen and (min-width: 768px) {
 
@@ -278,6 +313,8 @@ body {
 
     }
 
+    /* Final media query is to increase the space beside the main container on the largest screens */
+
     @media screen and (min-width: 980px) {
 
         .container-md {
@@ -286,27 +323,7 @@ body {
         }
     }
 
-    /* Image grid */
 
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 0 4px;
-      }
-
-      /* The below line of code splits the photo grid into two equal columns and the passing to the left and right provides spacing between the columns */
-      
-      .column {
-        flex: 50%;
-        max-width: 50%;
-        padding: 0 10px;
-      }
-
-      .column img {
-        margin-top: 8px;
-        vertical-align: middle;
-        width: 100%;
-      }
       
       @media screen and (max-width: 768px) {
         .column {
