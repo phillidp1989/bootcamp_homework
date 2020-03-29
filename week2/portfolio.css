@@ -139,9 +139,15 @@ body {
 
  }
 
- /* img {
-     height: 30%;
- } */
+ .column img {
+     height: 250px;
+     
+ }
+
+ .column {
+     padding-right: 5px;
+     padding-left: 5px;
+ }
 
  .websiteImg {
      position: relative;
@@ -158,6 +164,7 @@ body {
     height: 40px;
     line-height: 40px;
     font-size: 20px;
+    
     
     
  }
@@ -237,38 +244,7 @@ body {
    
    
 }
-
-/* .websiteImg {
-
-    display: flex;
-    height: 35%;
-}
-
-.passwordImg {
-
-    display: flex;
-    height: 35%;
-}
-
-.geoImg {
-
-    display: flex;
-    height: 35%;
-}
-
-.rockImg {
-    display: flex;
-    height: 35%;
-}
-
-.jsImg {
-    display: flex;
-    height: 35%;
-} */
-
-
-
-     
+  
  
 
  footer {
@@ -293,12 +269,12 @@ body {
     .container-md {
         margin-bottom: 100px;
     }
-/* 
-    .container-md {
-        clear: both;
-        margin-top: 20px;
-        margin-right: auto;
-        margin-bottom: 300px; */
+
+    .column img {
+
+        height: 300px;
+    }
+
     }
 
     @media screen and (min-width: 980px) {
@@ -317,10 +293,12 @@ body {
         padding: 0 4px;
       }
 
+      /* The below line of code splits the photo grid into two equal columns and the passing to the left and right provides spacing between the columns */
+      
       .column {
         flex: 50%;
         max-width: 50%;
-        padding: 0 4px;
+        padding: 0 10px;
       }
 
       .column img {
