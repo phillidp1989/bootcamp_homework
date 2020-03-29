@@ -1,3 +1,5 @@
+/* Styling is based on a mobile-first approach and media queries are added to the bottom of the css file to amend styling based on largewr screens */
+
 body {
     background-color: gainsboro
 
@@ -51,14 +53,6 @@ body {
     
 }
 
-/* Addition of pipes between nav links */
-
-.pipe {
-    height: 30px;
-    margin-top: 10px;
-    width: 1px;
-    background-color: grey;
-}
 
 /* Styling of desktop navbar */
 
@@ -118,9 +112,19 @@ body {
     
 }
 
+/* Addition of pipes between nav links on both mobile and desktop viewports */
+
+.pipe {
+    height: 30px;
+    margin-top: 10px;
+    width: 1px;
+    background-color: grey;
+
+}
+
 /* End of navbar styling */
 
-
+/* Main body styling including image and text */
 
  .container-md {
      background-color: white;
@@ -149,15 +153,21 @@ body {
     font-size: 20px;
 }
 
+/* End of main body styling */
+
+/* Footer styling */
+
 footer {
    border-top: 5px solid #20B2AA;
    position: sticky;
    bottom: 0;
 }
 
-
+/* Media queries to amend styling based on viewport being at least 768px */
 
  @media screen and (min-width: 768px) {
+
+/* The effect of the below code is to display one of the mobile or desktop header/navbar combinations based on the screen size and not display the other */
 
     #isMobile {
 
@@ -170,13 +180,12 @@ footer {
     }
 
     .container-md {
-        clear: both;
         margin-top: 20px;
         margin-right: auto;
         margin-bottom: 300px;
     }
 
-    
+    /* Floating index image to wrap text around the image on larger screens */
 
    #index-image {
     width: 40%;   
@@ -189,6 +198,7 @@ footer {
    }
 }    
  
+/* Final media query is to increase the space beside the main container on the largest screens */
 
  @media screen and (min-width: 980px) {
 
