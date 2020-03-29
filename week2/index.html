@@ -11,29 +11,41 @@
     <title>Home Page</title>
 </head>
 
-<body>
+<!-- Added flex classes to the body to enable flexbox utilities to be used where necessary -->
 
-    <nav class="navbar fixed-top navbar-light bg-light">
+<body class="d-flex flex-column">
 
-        <a class="navbar-brand" href="#" Dan Phillips>
-            <h1>Dan Phillips</h1>
-          </a>      
+    <div id="isMobile">
+    <header class="mobile-header-brand">
+        <p>Dan Phillips</p>
+    </header>
 
-          <ul class="nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
+    <nav class="mobile-navbar">
+        <ul>
+            <li><a href="./index.html">About</a></li>
+            <div class="pipe"></div>
+            <li><a href="./portfolio.html">Portfolio</a></li>
+            <div class="pipe"></div>
+            <li><a href="./contact.html">Contact</a></li>
         </ul>
-        </nav>
-
     </nav>
+    </div>
 
+    <div class= "desktopContainer" id="is-desktop">
+            <p class="desktop-header-brand">Dan Phillips</p>
+        <nav class="desktop-navbar">
+            <ul>
+                <li><a href="./index.html">About</a></li>
+                <div class="pipe"></div>
+                <li><a href="./portfolio.html">Portfolio</a></li>
+                <div class="pipe"></div>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+       
+    
     <div class="container-md">
         <div class="row">
             <div class="col-12">
@@ -45,7 +57,7 @@
         <div class="row">
             <div class="col-12">
             <img src="https://lh3.googleusercontent.com/cE2oHi1qtVvOvYZ48oTWNtQ0iXxPFYJa0Y4e-IeeKXu-90xijvHLZaEeqrrBektLSEWxV4hhlpqLjurUQVjvminKNVujJ3fWjqQ3Rbyx7GR6-VEal6jSCdqzCwptaIcHaWszp2b8aAf5lBm-B0-YjBGdTSU3eaFrkJUUdIqbCbyfpw7zF3zeRXM8uiV-RRzyjC8VXQRBZJ-hAC-XtC322DRq68ngWNaCoVkuW8V6-U4CkEssU1fgk9uKbJ8bLQJdpPO2Rgl7Gb0PZNavbhjrMasQIHkzaPthAUiM-b2iGIaXfnvrmd0R7C9R7jHTDEB-z1lOPTEV-M-PYp4h9l62tpauTu7HIFhBb_2owCIHskdTS8GfahmVciVLWkUhkJsObSoO5zy2P219LD-e78DwwpJseRUaqKE4y0CrjM1Cw5m2bEyvXD6amf6P95-HGHdjl8hdoVNnLifyaznuasarupit5FR_zo3F2HY4gdwnf5yxcuNCr8iu1OyEkGPmqwjj8vaL8aWH-5ezQs-xOXdK8aVGB2I_zzkXxo4kiIa77FaPW4Jo0QekI0t501-8EZzgxgi8XdzLU6Abvhe_hONUm67KWeTUcbNBmCrdvowvGmkcfUbfeC4xajEwMC8Y9EcBHO7WskuJi6Fi4x8S0_wh5UlsKPwgDcObbFCtecKDPanZf8CZ3EpMucqU_Mk=w651-h867-no"
-                alt="Dan and Nova">
+                id="index-image" alt="Dan and Nova">
 
                 <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?" 
 
@@ -60,7 +72,7 @@
             <small>Copyright &copy;</small>
           </div>
         </footer>
-      </body>
+     
 
 
 

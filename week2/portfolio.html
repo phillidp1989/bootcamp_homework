@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="portfolio.css">
+
+    <title>Portfolio</title>
+</head>
+
+<!-- Added flex classes to the body to enable flexbox utilities to be used where necessary -->
+
+<body class="d-flex flex-column">
+
+    <div id="isMobile">
+    <header class="mobile-header-brand">
+        <p>Dan Phillips</p>
+    </header>
+
+    <nav class="mobile-navbar">
+        <ul>
+            <li><a href="./index.html">About</a></li>
+            <div class="pipe"></div>
+            <li><a href="./portfolio.html">Portfolio</a></li>
+            <div class="pipe"></div>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <div class= "desktopContainer" id="is-desktop">
+            <p class="desktop-header-brand">Dan Phillips</p>
+        <nav class="desktop-navbar">
+            <ul>
+                <li><a href="./index.html">About</a></li>
+                <div class="pipe"></div>
+                <li><a href="./portfolio.html">Portfolio</a></li>
+                <div class="pipe"></div>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+       
+    
+    <div class="container-md">
+        <div class="row">
+            <div class="col-12">
+                <h2>Portfolio</h2>
+                <hr>
+            </div>
+        </div>
+        
+        <div class="row">
+
+<!-- column 1             -->
+            <div class="column">
+            <div class="websiteImg">
+            <img src="https://avadma.com/wp-content/uploads/2019/01/1.jpg" class="img-fluid-mb-4" alt="Responsive Website">
+                <p>Responsive Website</p>
+            </div>
+            
+            <div class="passwordImg">
+            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201904/Password.jpeg?CllvUA3vE5UTCXVJWyWF0GVuwogysD_I" class="img-fluid-mb-4" alt="Random Password Generator">
+            <p>Password Generator</p>
+            </div>
+
+            <div class="geoImg">
+            <img src="https://www.koombea.com/wp-content/uploads/2019/11/5-examples-of-how-geolocation-can-optimize-your-app@2x-1024x597.jpg" class="img-fluid-mb-4" alt="Geolocation Game">
+            <p>Geolocation App</p>
+            </div>
+        </div> <!-- End of column -->
+<!-- column 2 -->
+            <div class="column">
+                <div class="rockImg">
+                <img src="https://miro.medium.com/max/1000/1*FEcr9_owB5KplrClDpRenA.png"
+                    class="img-fluid-mb-4" alt="Rock Paper Scissors Game">
+                    <p>Rock Paper Scissors Game</p>
+                </div>
+                
+                <div class="jsImg">
+                <img src="https://cms-assets.tutsplus.com/uploads/users/48/posts/32467/preview_image/practice-javascript-and-learn-functions-400x277.png" class="img-fluid-mb-4" alt="JavaScript Project">
+                <p>JavaScript Project</p>
+                </div>
+               
+                </div>
+<!-- column 3 -->
+                <!-- <div class="column">
+                    <img src="https://lh3.googleusercontent.com/cE2oHi1qtVvOvYZ48oTWNtQ0iXxPFYJa0Y4e-IeeKXu-90xijvHLZaEeqrrBektLSEWxV4hhlpqLjurUQVjvminKNVujJ3fWjqQ3Rbyx7GR6-VEal6jSCdqzCwptaIcHaWszp2b8aAf5lBm-B0-YjBGdTSU3eaFrkJUUdIqbCbyfpw7zF3zeRXM8uiV-RRzyjC8VXQRBZJ-hAC-XtC322DRq68ngWNaCoVkuW8V6-U4CkEssU1fgk9uKbJ8bLQJdpPO2Rgl7Gb0PZNavbhjrMasQIHkzaPthAUiM-b2iGIaXfnvrmd0R7C9R7jHTDEB-z1lOPTEV-M-PYp4h9l62tpauTu7HIFhBb_2owCIHskdTS8GfahmVciVLWkUhkJsObSoO5zy2P219LD-e78DwwpJseRUaqKE4y0CrjM1Cw5m2bEyvXD6amf6P95-HGHdjl8hdoVNnLifyaznuasarupit5FR_zo3F2HY4gdwnf5yxcuNCr8iu1OyEkGPmqwjj8vaL8aWH-5ezQs-xOXdK8aVGB2I_zzkXxo4kiIa77FaPW4Jo0QekI0t501-8EZzgxgi8XdzLU6Abvhe_hONUm67KWeTUcbNBmCrdvowvGmkcfUbfeC4xajEwMC8Y9EcBHO7WskuJi6Fi4x8S0_wh5UlsKPwgDcObbFCtecKDPanZf8CZ3EpMucqU_Mk=w651-h867-no"
+                        class="img-fluid-mb-4" alt="Dan and Nova">
+                    
+                    <img src="https://lh3.googleusercontent.com/f7mKq2wGnzB9H-o7Mh2thLEhUdTT-CfLPhjpxktBTnqJtVhJr92kaXBanmdQJoc_eMNHNi7yanicdz84jyRfn9a6XkXvbMgqAxLklZnxAwM8ATGkTobOVzqinRgTrjG-qQClYHCYtme9oaaG7ppegapMUfvJxgc0xn0LIglPUo5aJs8M69EFSR4d2D4DS7jfrFM7-JgOcIhv-HJmQE_HLdaOWKzLi6taF3MNl3QclT9XWlqFnrFogj-vz76hRH8abmasIA675xkrI09zRtLGFF3qDoVnFQZD15E86O9XxzljK6rYwU9HpNPRe-npRKDAM22Kw9bbR2kK1YOOnPEShuMLqNMCQCPsLVSZcllx6XtopRCaOvxC8ATPLMFq7fnkvkec7-_ChjskWispmIL3_vm5fZo84XLTYnTWBBzI38bOZM6KJ5myBESqIYnvH7oiWOwVuZRUG5CE7wVROAnb5kYVSa2M3G0nmEcYslNuEyneaCi95b0-tbnMmrZ6aWHfMU1uwpBXkbuhyvgo838WvVRJQM1FFp8FmN4gX3-KcOHetQ7uKA-zV6IzpJRB0cjJdrwtHG6HN_Nxvc8DsnoiMsz-2_riCvVGtMpAe7S4-VytbRzHwIL_DwIGr5Qb421fUOY9uz3sIHV5OQeFq3dFel3xAhZ1ow4K11tefLePtvUX6BYvMaU-WZFkmtI=w651-h867-no" class="img-fluid-mb-4" alt="Novey">
+        
+                    <img src="https://lh3.googleusercontent.com/SCJxMW-GcXbJiH3T-Uz4lNvpI-HAWTuq7LTxwtJQT4cy_k5aJdy_qykp5lO0uOMK5D5OPedxKCmrfwWZohAjwm01VfogccjCfPHsomFZtTv-9Kssp2q8mgCfJ7sop7GXfW3faXNmUfjVOd7QH45_zsMzvkeGAfDePURN3Lze7k1olz0NY1TNPZe98L6s7D6XK6lpemOZw8sDTN8vWczjf6fFs4eGxEy3133BA1EH4kOoRuzK-vXzIVFCLaBxXeVVtR1tYrsuiW482iWWEWLn1Xen4_iAb3ZJDaiApYS53K1M08D0l3crvaRqfIfwwFstbHXwOcMgTSQMPzJC5zpTD0sCf6wyJZn95qPvfL9RpFEllfsdtHRJrAJ61k04rKAEGoJqx0L6qFVU9oCGyRYQ68FciYwjrB7WwEHFOCY0iAV27ES1p1ubpOvUOxIrD5iyOuBYqa6DUTPYdSia18jY7AREcFlUg9GDz98CkLf_wU2iLf-4Aj3jMg_D-ICis50M2T4fo6xPweure8A07RDvJpZj8etPFDbmzyyFnq41M5EI64HM3w8dkw-g348FyrBJTHKFhA6WqomQwAHxyhWou4BJHxbd1wCMxeCtl2D-Bku0tv_pX-pHGdC1FYCUydkzFMX1wWWAAmqJZf9Cu1HrBmFl4GwL3yMAuiobikAJYO5iqRBB2SrhAYaO28I=w651-h867-no" class="img-fluid-mb-4" alt="Hummus">
+                    </div> -->
+
+
+        </div>
+        
+    </div>
+
+    
+        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+          <div class="container text-center">
+            <small>Copyright &copy;</small>
+          </div>
+        </footer>
+      </body>
+
+
+
+
+
+
+</body>
+
+</html>

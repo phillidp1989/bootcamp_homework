@@ -1,6 +1,6 @@
 body {
-    background-color: gainsboro
-
+    background-color: gainsboro;
+    
 }
 
 /* Styling for the mobile specific layout */
@@ -29,7 +29,7 @@ body {
  .mobile-navbar {
      background-color: white;
      height: 60px;
-     padding-top: 5px;
+     padding-top: 5px;     
      
  }
 
@@ -49,6 +49,7 @@ body {
     margin: 0 5px;
     padding: 10px;
     
+    
 }
 
 /* Addition of pipes between nav links */
@@ -56,6 +57,7 @@ body {
 .pipe {
     height: 30px;
     margin-top: 10px;
+    padding-top: 5px;
     width: 1px;
     background-color: grey;
 }
@@ -129,31 +131,40 @@ body {
      margin-top: 20px;
      padding-top: 20px;
      padding-left: 20px;
-     width: fit-content;
+     width: 96%;
 
  }
 
  h2 {
     color: #20B2AA;
+
  }
 
- #index-image {
-     width: 100%;
-     margin-bottom: 10px;
+
+ form {
+     margin-left: 15px;
+     padding-bottom: 15px;
+     padding-right: 15px;
+     font-family: 'Cantata One', serif;
+     color: grey;
  }
 
- .row > p {
-    margin-left: 10px;
-    line-height: 35px;
-}
+  
+ 
+ footer {
+    border-top: 5px solid #20B2AA;
+    position: fixed;
+    bottom: 0;
 
-footer {
-   border-top: 5px solid #20B2AA;
-   position: sticky;
-   bottom: 0;
-}
+ }
 
+ footer {
+    border-top: 5px solid #20B2AA;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 
+ }
 
  @media screen and (min-width: 768px) {
 
@@ -168,30 +179,27 @@ footer {
     }
 
     .container-md {
-        clear: both;
-        margin-top: 20px;
-        margin-right: auto;
-        margin-bottom: 300px;
+        margin-bottom: 100px;
+    }
+
+    }
+
+    @media screen and (min-width: 980px) {
+
+        .container-md {
+            width: 60%;
+            margin-right: 300px;
+        }
     }
 
     
+      
+      @media screen and (max-width: 768px) {
+        .column {
+          position: relative;
+          flex: 100%;
+          max-width: 100%;
+        }
 
-   #index-image {
-    width: 40%;   
-    float: left;
-    margin-right: 10px;
-   }
-
-   p {
-       margin-left: 10px;
-   }
-}    
- 
-
- @media screen and (min-width: 980px) {
-
-    .container-md {
-        width: 60%;
-        margin-right: 300px;
+        
     }
-}
