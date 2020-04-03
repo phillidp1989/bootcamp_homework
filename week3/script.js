@@ -72,36 +72,95 @@ function generatePassword() {
     userChoices(alert("You must select one of the options to generate a password"))
   }
 
-  // Else if statement to run block of code for four affirmative answers from the user. Block of code to be run includes .concat which joins together all of the arrays as per user's selection.
+  // Else if statement to run block of code for four affirmative answers from the user; this will assign a values to the undefined variable userChoices. Block of code to be run includes .concat which joins together all of the arrays as per user's selection.
 
   else if (confirmUpper && confirmLower && confirmNumber && confirmSymbol) {
-    userChoices = confirmUpper.concat(confirmLower, confirmNumber, confirmSymbol);
+    userChoices = upperArr.concat(lowerArr, numberArr, symbolArr);
   }
   
-  // Else if statement to run block of code for upper, lower and number
+  // Else if statement to run block of code for upper, lower and number (3)
 
   else if (confirmUpper && confirmLower && confirmNumber) {
-    userChoices = confirmUpper.concat(confirmLower, confirmNumber);
+    userChoices = upperArr.concat(lowerArr, numberArr);
   }
 
-  // Else if statement to run block of code for upper, lower and symbol
+  // Else if statement to run block of code for upper, lower and symbol (3)
 
   else if (confirmUpper && confirmLower && confirmSymbol) {
-    userChoices = confirmUpper.concat(confirmLower, confirmSymbol);
+    userChoices = upperArr.concat(lowerArr, symbolArr);
   }
 
-  // Else if statement to run block of code for upper, number and symbol
+  // Else if statement to run block of code for upper, number and symbol (3)
 
   else if (confirmUpper && confirmNumber && confirmSymbol) {
-    userChoices = confirmUpper.concat(confirmNumber, confirmSymbol);
+    userChoices = upperArr.concat(numberArr, symbolArr);
   }
 
-  // Else if statement to run block of code for lower, number and symbol
+  // Else if statement to run block of code for lower, number and symbol (3)
 
   else if (confirmLower && confirmNumber && confirmSymbol){
-    userChoices = confirmLower.concat(confirmNumber, confirmSymbol);
+    userChoices = lowerArr.concat(numberArr, symbolArr);
   }
 
+  // Else if statement to run block of code for upper and lower (2)
+
+  else if (confirmUpper && confirmLower) {
+    userChoices = upperArr.concat(lowerArr);
+  }
+
+  // Else if statement to run block of code for upper and number (2)
+
+  else if (confirmUpper && confirmNumber) {
+    userChoices = upperArr.concat(numberArr);
+  }
+
+  // Else if statement to run block of code for upper and symbol (2)
+
+  else if (confirmUpper && confirmSymbol) {
+    userChoices = upperArr.concat(symbolArr);
+  }
+
+  // Else if statement to run block of code for lower and number (2)
+
+  else if (confirmLower && confirmNumber) {
+    userChoices = lowerArr.concat(numberArr);
+  }
+
+  // Else if statement to run block of code for lower and symbol (2)
+
+  else if (confirmLower && confirmSymbol) {
+    userChoices = lowerArr.concat(symbolArr);
+  }
+
+  // Else if statement to run block of code for number and symbol (2)
+
+  else if (confirmNumber && confirmSymbol) {
+    userChoices = numberArr.concat(symbolArr);
+  }
+
+  // Else if statement to run block of code for upper only
+
+  else if (confirmUpper) {
+    userChoices = upperArr;
+  }
+
+  // Else if statement to run block of code for lower only
+
+  else if (confirmLower) {
+    userChoices = lowerArr;
+  }
+
+  // Else if statement to run block of code for numbers only
+
+  else if (confirmNumber) {
+    userChoices = numberArr;
+  }
+
+  // Else if statement to run block of code for symbols only
+
+  else if (confirmSymbol) {
+    userChoices = symbolArr;
+  }
 
 }
 
