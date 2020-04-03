@@ -18,7 +18,11 @@ var numberArr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 // Symbol Array
 
-var symbolArr = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+var symbolArr = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", " < ", "=", " > ", " ? ", "@", "[", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+
+// Value of userChoices variable will be defined based on the selection of the user e.g. affirmative for upper and numbers but not for lower and symbols vs affirmative for all criteria. It has therefore been left undefined.
+
+var userChoices;
 
 
 // Function to randomly select an index from upper array
@@ -26,17 +30,19 @@ var symbolArr = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", "."
 // Function to randomly select an index from number array
 // Function to randomly select an index from symbol array
 
-// prompt for password length (string) - code should validate user input - loop if input is not between 8 and 128
-// confirm for lower (boolean)
-// confirm for upper (boolean)
-// confirm for number (boolean)
-// confirm for symbol (boolean)
-// code needs to validate that at least one of the above criteria is selected
+
+
 
 // Start of generate password function
 
 function generatePassword() {
+  
+  // Variable to hold the value input by the user in response to password length prompt
+
   var lengthResponse = parseInt(prompt("How long would you like your password to be (must be between 8 and 128 characters"));
+
+  // If else statements to validate the response given by the user
+
   if (!lengthResponse) {
     alert("You need to enter a number between 8 and 128")
   }
@@ -50,12 +56,53 @@ function generatePassword() {
     alert("More than 128 characters, seriously?! You're never going to remember that. Try again pal.")
   }
 
+  // Final else statement to cycle through password criteria confirms if the lengthResponse value is valid i.e. a number between 8 and 128
+
   else {
     var confirmUpper = confirm("Do you want your password to contain uppercase letters?");
     var confirmLower = confirm("Do you want your password to contain lowercase letters?");
     var confirmNumber = confirm("Do you want your password to contain numbers?");
     var confirmSymbol = confirm("Do you want your password to contain symbols?");
+  };
+
+  // The following if else statements pertain to all permutations of user choices
+  // If statement which runs code to alert the user if they have not answered in the affirmative to any of the confirm messages, so their password cannot be generated
+  
+  if (!confirmUpper && !confirmLower && !confirmNumber && confirmSymbol) {
+    userChoices(alert("You must select one of the options to generate a password"))
   }
+
+  // Else if statement to run block of code for four affirmative answers from the user. Block of code to be run includes .concat which joins together all of the arrays as per user's selection.
+
+  else if (confirmUpper && confirmLower && confirmNumber && confirmSymbol) {
+    userChoices = confirmUpper.concat(confirmLower, confirmNumber, confirmSymbol);
+  }
+  
+  // Else if statement to run block of code for upper, lower and number
+
+  else if (confirmUpper && confirmLower && confirmNumber) {
+    userChoices = confirmUpper.concat(confirmLower, confirmNumber);
+  }
+
+  // Else if statement to run block of code for upper, lower and symbol
+
+  else if (confirmUpper && confirmLower && confirmSymbol) {
+    userChoices = confirmUpper.concat(confirmLower, confirmSymbol);
+  }
+
+  // Else if statement to run block of code for upper, number and symbol
+
+  else if (confirmUpper && confirmNumber && confirmSymbol) {
+    userChoices = confirmUpper.concat(confirmNumber, confirmSymbol);
+  }
+
+  // Else if statement to run block of code for lower, number and symbol
+
+  else if (confirmLower && confirmNumber && confirmSymbol){
+    userChoices = confirmLower.concat(confirmNumber, confirmSymbol);
+  }
+
+
 }
 
 
