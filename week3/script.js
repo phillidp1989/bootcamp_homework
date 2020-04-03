@@ -4,13 +4,20 @@ var upperArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
 
 // Function to convert text into lower case
 
-var toLower = function (a) {
-return a.toLowerCase();
-}
+// var toLower = function (a) {
+// return a.toLowerCase();
+// }
 
 // Variable contains function run against upper case array to create lower case array. Map method runs the toLower function against each value in the UpperArr array to create a new lower case array
 
-var lowerArr = upperArr.map(toLower);
+// var lowerArr = upperArr.map(toLower);
+
+var lowerArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+
+// Log to test that toLower variable correctly holds lower case values
+
+// console.log(lowerArr);
 
 // Number Array
 
@@ -160,9 +167,29 @@ function generatePassword() {
 
   else if (confirmSymbol) {
     userChoices = symbolArr;
+  };
+
+  var password1 = [];
+  
+  // For loop to randomly select a value from the relevant array associated with userChoices based on user selection. This loop will end once the total number is reached based on lengthResponse
+
+  for (var i = 0; i < lengthResponse; i++){
+    var randomSelection = userChoices[Math.floor(Math.random() * userChoices.length)];
+    password1.push(randomSelection);
+    
+   
+    // return password2;
+
   }
 
+  var password2 = password1.join("");
+  // UserInput(password2);
+  return password2;
+  
+
 }
+
+
 
 
 
@@ -172,10 +199,10 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var password2 = generatePassword();
+  var password2Text = document.querySelector("#password");
 
-  passwordText.value = password;
+  password2Text.value = password2;
 
 }
 
