@@ -25,7 +25,7 @@ var numberArr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 // Symbol Array
 
-var symbolArr = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", " < ", "=", " > ", " ? ", "@", "[", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+var symbolArr = ["!", "#", "$", "%", "&", "'", "(",")", "*", "+", ",", "-", ".", "/", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
 
 // Value of userChoices variable will be defined based on the selection of the user e.g. affirmative for upper and numbers but not for lower and symbols vs affirmative for all criteria. It has therefore been left undefined.
 
@@ -56,11 +56,11 @@ function generatePassword() {
   
 
   else if (lengthResponse < 8) {
-    alert("Your selected number is too low. Anyone could crack that password!")
+    alert("Your selected password length is too low")
   }
   
   else if (lengthResponse > 128) {
-    alert("More than 128 characters, seriously?! You're never going to remember that. Try again pal.")
+    alert("Your selected password length is too high")
   }
 
   // Final else statement to cycle through password criteria confirms if the lengthResponse value is valid i.e. a number between 8 and 128
@@ -75,11 +75,11 @@ function generatePassword() {
   // The following if else statements pertain to all permutations of user choices
   // If statement which runs code to alert the user if they have not answered in the affirmative to any of the confirm messages, so their password cannot be generated
   
-  if (!confirmUpper && !confirmLower && !confirmNumber && confirmSymbol) {
+  if (!confirmUpper && !confirmLower && !confirmNumber && !confirmSymbol) {
     userChoices(alert("You must select one of the options to generate a password"))
   }
 
-  // Else if statement to run block of code for four affirmative answers from the user; this will assign a values to the undefined variable userChoices. Block of code to be run includes .concat which joins together all of the arrays as per user's selection.
+  // Else if statement to run block of code for four affirmative answers from the user; this will assign a value to the undefined variable userChoices. Block of code to be run includes .concat which joins together all of the arrays as per user's selection.
 
   else if (confirmUpper && confirmLower && confirmNumber && confirmSymbol) {
     userChoices = upperArr.concat(lowerArr, numberArr, symbolArr);
