@@ -2,22 +2,7 @@
 var upperArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 // Lower Array - convert upper array to lower case
 
-// Function to convert text into lower case
-
-// var toLower = function (a) {
-// return a.toLowerCase();
-// }
-
-// Variable contains function run against upper case array to create lower case array. Map method runs the toLower function against each value in the UpperArr array to create a new lower case array
-
-// var lowerArr = upperArr.map(toLower);
-
 var lowerArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
-
-// Log to test that toLower variable correctly holds lower case values
-
-// console.log(lowerArr);
 
 // Number Array
 
@@ -27,16 +12,9 @@ var numberArr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 var symbolArr = ["!", "#", "$", "%", "&", "'", "(",")", "*", "+", ",", "-", ".", "/", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
 
-// Value of userChoices variable will be defined based on the selection of the user e.g. affirmative for upper and numbers but not for lower and symbols vs affirmative for all criteria. It has therefore been left undefined.
+// Value of userChoices variable will be defined based on the selection of the user e.g. affirmative for upper and numbers but not for lower and symbols vs affirmative for all criteria. It has therefore been left undefined outside of the generatePassword function.
 
 var userChoices;
-
-
-// Function to randomly select an index from upper array
-// Function to randomly select an index from lower array
-// Function to randomly select an index from number array
-// Function to randomly select an index from symbol array
-
 
 
 
@@ -46,21 +24,24 @@ function generatePassword() {
   
   // Variable to hold the value input by the user in response to password length prompt
 
-  var lengthResponse = parseInt(prompt("How long would you like your password to be (must be between 8 and 128 characters"));
+  var lengthResponse = parseInt(prompt("How long would you like your password to be (must be between 8 and 128 characters)?"));
 
   // If else statements to validate the response given by the user
 
   if (!lengthResponse) {
     alert("You need to enter a number between 8 and 128")
+    return generatePassword();
   }
   
 
   else if (lengthResponse < 8) {
     alert("Your selected password length is too low")
+    return generatePassword();
   }
   
   else if (lengthResponse > 128) {
     alert("Your selected password length is too high")
+    return generatePassword();
   }
 
   // Final else statement to cycle through password criteria confirms if the lengthResponse value is valid i.e. a number between 8 and 128
@@ -169,30 +150,27 @@ function generatePassword() {
     userChoices = symbolArr;
   };
 
+  // This variable is being used as an array placeholder for the randomly generated characters based on user selection
+
   var password1 = [];
   
   // For loop to randomly select a value from the relevant array associated with userChoices based on user selection. This loop will end once the total number is reached based on lengthResponse
 
   for (var i = 0; i < lengthResponse; i++){
     var randomSelection = userChoices[Math.floor(Math.random() * userChoices.length)];
-    password1.push(randomSelection);
     
-   
-    // return password2;
+    // This method pushes the output of the randomSelection variable to the password1 array placeholder to hold all of the values as an array
 
+    password1.push(randomSelection);
+      
   }
 
+// The below method is joining all of the values pushed to the password1 array placeholder and saving them as a string and a return function is then added to return this value
+
   var password2 = password1.join("");
-  // UserInput(password2);
   return password2;
   
-
 }
-
-
-
-
-
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
