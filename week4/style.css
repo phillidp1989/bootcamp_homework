@@ -1,0 +1,26 @@
+body {
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+nav {
+    border: solid darkgreen 2px;
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px; 
+    padding-right: 20px;
+    
+    
+
+}
+
+#highScore {
+    background-color: bisque;
+}
+
+#highScore > h1 {
+    color: black;
+}
+
