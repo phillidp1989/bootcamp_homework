@@ -10,9 +10,7 @@
 <body>
     <nav>
         <div id="highScoreDiv">
-            <a onclick="getScore() "href="#">
-                <h1>High Scores</h1>
-            </a>
+            <button id="myBtn"><h1>High Scores</h1></button>
         </div>
         <div id="timerDiv">
             <h1>Time Remaining: 
@@ -20,6 +18,19 @@
             </h1>
         </div>
     </nav>
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h1>All time high scores!</h1><hr>
+          <ol id="leaderboard"></ol>
+            <button class="playAgain">Play Again!</button>
+            <button id="clearScores">Clear Scores</button>
+        </div>
+      
+      </div>
 
     <!-- main body of the quiz -->
 
@@ -53,7 +64,8 @@
             <h3>You scored <span id="outOf"></span> points!</h3>
             <h3>That means you got <span id="correctQuestions"></span> questions correct plus bonus points for having time to spare!</h3>
             <input type="text" id="name" placeholder="Initials"> 
-            <button onclick="setScore()">Set score!</button>
+            <button id="setScore">Set score!</button>
+            <button class="playAgain">Play Again!</button>
         </div>
     </div>
 

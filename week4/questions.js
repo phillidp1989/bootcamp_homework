@@ -6,14 +6,17 @@ var questionContainerEl = document.querySelector("#questions-container");
 var questionEl = document.querySelector("#question");
 var answerButtonsEl = document.querySelector("#answer-buttons");
 var correctConfirmEl = document.querySelector("#correctConfirm");
-// var answerOneEl = document.querySelector("#answerOne");
-// var answerTwoEl = document.querySelector("#answerTwo");
-// var answerThreeEl = document.querySelector("#answerThree");
-// var answerFourEl = document.querySelector("#answerFour");
 var controlsEl = document.querySelector(".controls");
 var timesUpEl = document.querySelector("#timesUp");
 var outOf100El = document.querySelector("#outOf");
 var noOfCorrectQuestionsEl = document.querySelector("#correctQuestions");
+var initialsEl = document.querySelector("#name");
+var setScoreEl = document.querySelector("#setScore");
+var playAgainEl = document.querySelector(".playAgain");
+var clearScoresEl = document.querySelector("#clearScores");
+var leaderboardEl = document.querySelector("#leaderboard");
+var highscores = JSON.parse(localStorage.getItem("scores")) || [];
+
 
 // Event listener to listen for a click on the Start Quiz button to initialise the startQuiz function
 
@@ -166,15 +169,6 @@ function selectAnswer(e) {
 
 }
 
-// function checkAnswer () {
-//     if (selectedAnswer === currentQuestionIndex[i].answer) {
-//         count++
-//         console.log(checkAnswer);
-//     }
-// }
-
-// console.log(currentQuestionIndex);
-
 function completedQuestions() {
     if (currentQuestionIndex === questions.length) {
         clearInterval(timer);
@@ -184,48 +178,102 @@ function completedQuestions() {
     }
 }
 
-// function score() {
-
-
-// var scoreMultiplied = score * 10;
-// var totalScore = scoreMultiplied + earlyComplete;
-// console.log(scoreMultiplied);
-
-
-
-// }
-
-
-
-
-// function getQuestion () {
-//     var q = questions[currentQuestion];
-
-//     questionEl.innerHTML = "<h2>" + q.question + "</h2>"
-//     answerOneEl.innerHTML = q.choices[0];
-//     answerTwoEl.innerHTML = q.choices[1];
-//     answerThreeEl.innerHTML = q.choices[2];
-//     answerFourEl.innerHTML = q.choices[3];
-// }
-
-// Function to stop the time and end the game
-
 function endGame() {
     clearInterval(timer);
 
     timesUpEl.classList.remove('hide')
     questionContainerEl.classList.add('hide');
-    outOf100El.innerHTML = (score * 10) + timeLeft;
+    var totalScore = (score * 10) + timeLeft;
+    window.totalScore = totalScore;
+    outOf100El.innerHTML = totalScore;
     noOfCorrectQuestionsEl.innerHTML = score;
 
-    // `
-    // <h2>Game over!</h2>
-    // <h3>You got a ` + score +  ` /100!</h3>
-    // <h3>That means you got ` + score / 20 +  ` questions correct!</h3>
-    // <input type="text" id="name" placeholder="First name"> 
-    // <button onclick="setScore()">Set score!</button>`;
-
-    // questionContainerEl.innerHTML = gameOver;
-
 }
+
+setScoreEl.addEventListener("click", setHighScore);
+
+function setHighScore() {
+    var userObj = {
+        initials: initialsEl.value,
+        highScore: parseInt(window.totalScore)
+    }
+
+    console.log(userObj);
+    highscores.push(userObj);
+    console.log(highscores);
+    localStorage.setItem("scores", JSON.stringify(highscores));
+    
+    
+    // localStorage.setItem("highscore", totalScore);
+    // localStorage.setItem("highscoreName",  initialsEl.value);
+    // getHighScore();
+    printHighScore();
+}
+
+// function getHighScore() {
+//     var userNameList = document.querySelector("#userName");
+//     var userHighScoreList = document.querySelector("#userHighScore");
+//     // var initials = localStorage.getItem("highscoreName");
+//     // var userHighscore = localStorage.getItem("highscore");
+
+//     // userNameList.innerText = initials;
+//     // userHighScoreList.innerText = userHighscore;
+
+//     var finalScores = localStorage.getItem("scores");
+//     userNameList.innerText = finalScores;
+
+// }
+
+function printHighScore() {
+
+    JSON.parse(localStorage.getItem("scores"))
+    highscores = scoresSorted(highscores, 'scores');
+    // var sorted = highscores.sort(function(a, b) {return b.score-a.score});
+
+    for (var i = 0; i < highscores.length; i++) {
+      console.log(highscores[i].score);
+      var home = document.createElement("li"); //creates new p
+      var words = document.createTextNode(highscores[i].initials + ": " + highscores[i].highScore)  ; //content of p
+      home.appendChild(words);
+      leaderboardEl.appendChild(home);
+    }
+}
+
+// Sort the scores
+
+function scoresSorted(array, key) {
+    return array.sort(function(a,b) {
+      if (a.highScore < b.highScore) {
+        return 1;
+      }
+      return -1;
+    });
+  }
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 
