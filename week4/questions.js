@@ -132,31 +132,46 @@ function resetState() {
 function selectAnswer(e) {
     var selectedButton = event.target;
     console.log(event.target);
-    var selectedAnswer = selectedButton.innerText;
+    // var selectedAnswer = selectedButton.innerText;
     var correct = selectedButton.dataset.correct;
     console.log(correct);
     // console.log(selectedAnswer);
     if (correct) {
         correctConfirmEl.innerText = correctMessage;
+        selectedButton.classList.add("correctClass");
         
     } else {
         correctConfirmEl.innerText = incorrectMessage;
+        selectedButton.classList.add("incorrectClass");
     }
     // checkAnswer();
-    currentQuestionIndex++;
-    completedQuestions();
-    setNextQuestion();
+    var betweenQuestionTimer;
+    var timeBetweenQuestions = 2; 
+    betweenQuestionTimer = setInterval(function() {
+        timeBetweenQuestions--;
+        if (timeBetweenQuestions <= 0) {
+            clearInterval(betweenQuestionTimer);
+
+            currentQuestionIndex++;
+            completedQuestions();
+            setNextQuestion();
+            correctConfirmEl.innerText = "";
+
+        }
+    }, 1000);
+
+    
 
 }
 
-function checkAnswer () {
-    if (selectedAnswer === currentQuestionIndex[i].answer) {
-        count++
-        console.log(checkAnswer);
-    }
-}
+// function checkAnswer () {
+//     if (selectedAnswer === currentQuestionIndex[i].answer) {
+//         count++
+//         console.log(checkAnswer);
+//     }
+// }
 
-console.log(currentQuestionIndex);
+// console.log(currentQuestionIndex);
 
 function completedQuestions() {
     if (currentQuestionIndex === questions.length){

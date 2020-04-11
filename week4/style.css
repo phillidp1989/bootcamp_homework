@@ -84,5 +84,13 @@ nav {
     display: none;
 }
 
+.correctClass {
+    background-color: green;
+}
+
+.incorrectClass {
+    background-color: red;
+}
+
 
 
