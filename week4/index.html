@@ -19,7 +19,47 @@
                 <span id="timeRemaining">0</span>
             </h1>
         </div>
-
     </nav>
+
+    <!-- main body of the quiz -->
+
+    <div id="container">
+
+    <!-- Container holding the questions and the answers -->
+
+        <div id="questions-container" class="hide">
+                <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">   
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <div id="correctConfirm"></div> 
+        </div>
+    
+    <!-- Container holding the start quiz button -->
+    
+        <div class="controls">
+            <h1>JavaScript Quiz!</h1>
+            <h2>Click to play!</h2>
+            <button id="start-button" class="start-button btn">Start the Quiz!</button>
+        </div>
+
+    <!-- Container holding the time's up message when the countdown reaches zero -->
+
+        <div id="timesUp" class="hide">
+            <h2>Game over!</h2>
+            <h3>You got <span id="outOf"></span>/100!</h3>
+            <h3>That means you got <span id="correctQuestions"></span> questions correct!</h3>
+            <input type="text" id="name" placeholder="First name"> 
+            <button onclick="setScore()">Set score!</button>
+        </div>
+    </div>
+
+    </div>
+
+    <script src="questions.js"></script>
+
 </body>
 </html>
