@@ -25,54 +25,54 @@ var correctMessage = "You are correct!"
 var incorrectMessage = "You got that one wrong!"
 
 var questions = [{
-    
+
     question: 'The condition in an if / else statement is enclosed within...?',
     answers: [
-      { text: 'Quotes', correct: false },
-      { text: 'Curly Braces', correct: false },
-      { text: 'Parentheses', correct: true },
-      { text: 'Square Brackets', correct: false }
+        { text: 'Quotes', correct: false },
+        { text: 'Curly Braces', correct: false },
+        { text: 'Parentheses', correct: true },
+        { text: 'Square Brackets', correct: false }
     ],
     correctAnswer: 'Parentheses'
-  },
-  {
+},
+{
     question: 'The logical operator that represents "or" is...',
     answers: [
-      { text: '||', correct: true },
-      { text: 'OR', correct: false },
-      { text: '&&', correct: false },
-      { text: '===', correct: false }
+        { text: '||', correct: true },
+        { text: 'OR', correct: false },
+        { text: '&&', correct: false },
+        { text: '===', correct: false }
     ],
     correctAnswer: '||'
-  },
-  {
+},
+{
     question: 'Which built-in method adds one or more elements to the end of an array and returns the new length of the array?',
     answers: [
-      { text: '.last', correct: false },
-      { text: '.put', correct: false },
-      { text: '.push', correct: true },
-      { text: '.pop', correct: false }
+        { text: '.last', correct: false },
+        { text: '.put', correct: false },
+        { text: '.push', correct: true },
+        { text: '.pop', correct: false }
     ],
     correctAnswer: '.push'
 
-  },
-  {
+},
+{
     question: 'Which of the following is an "assignment operator" in JavaScript?',
     answers: [
-      { text: '=', correct: true },
-      { text: '-', correct: false },
-      { text: '+', correct: false },
-      { text: '#', correct: false }
+        { text: '=', correct: true },
+        { text: '-', correct: false },
+        { text: '+', correct: false },
+        { text: '#', correct: false }
     ],
     correctAnswer: '='
-  }
+}
 ]
 
 // Additional variables
 
 var score = 0;
 // var currentQuestion = 0;
-var lastQuestion = questions.length -1;
+var lastQuestion = questions.length - 1;
 var timeLeft = 0;
 var timer;
 var shuffledQuestions, currentQuestionIndex;
@@ -84,9 +84,9 @@ function startQuiz() {
     timeRemainingEl.innerHTML = timeLeft;
     controlsEl.classList.add("hide");
     questionContainerEl.classList.remove("hide");
-    
 
-    timer = setInterval(function() {
+
+    timer = setInterval(function () {
         timeLeft--;
         timeRemainingEl.innerHTML = timeLeft;
         if (timeLeft <= 0) {
@@ -98,7 +98,7 @@ function startQuiz() {
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0;
     setNextQuestion();
-    
+
 
 }
 
@@ -110,24 +110,24 @@ function setNextQuestion() {
 function showQuestion(question) {
     questionEl.innerText = question.question;
     question.answers.forEach(answer => {
-    var newButton = document.createElement('button');
-    newButton.innerText = answer.text;
-    newButton.classList.add("btn");
-    if (answer.correct) {
-         newButton.dataset.correct = answer.correct
+        var newButton = document.createElement('button');
+        newButton.innerText = answer.text;
+        newButton.classList.add("btn");
+        if (answer.correct) {
+            newButton.dataset.correct = answer.correct
 
-    }
-    answerButtonsEl.appendChild(newButton);
-    newButton.addEventListener("click", selectAnswer)
-    
+        }
+        answerButtonsEl.appendChild(newButton);
+        newButton.addEventListener("click", selectAnswer)
+
     })
 }
 
 function resetState() {
     while (answerButtonsEl.firstChild) {
-    answerButtonsEl.removeChild(answerButtonsEl.firstChild)
+        answerButtonsEl.removeChild(answerButtonsEl.firstChild)
     }
-  }
+}
 
 function selectAnswer(e) {
     var selectedButton = event.target;
@@ -139,15 +139,17 @@ function selectAnswer(e) {
     if (correct) {
         correctConfirmEl.innerText = correctMessage;
         selectedButton.classList.add("correctClass");
-        
+        score++;
+
     } else {
         correctConfirmEl.innerText = incorrectMessage;
         selectedButton.classList.add("incorrectClass");
+        timeLeft = timeLeft - 5;
     }
     // checkAnswer();
     var betweenQuestionTimer;
-    var timeBetweenQuestions = 2; 
-    betweenQuestionTimer = setInterval(function() {
+    var timeBetweenQuestions = 2;
+    betweenQuestionTimer = setInterval(function () {
         timeBetweenQuestions--;
         if (timeBetweenQuestions <= 0) {
             clearInterval(betweenQuestionTimer);
@@ -160,7 +162,7 @@ function selectAnswer(e) {
         }
     }, 1000);
 
-    
+
 
 }
 
@@ -174,11 +176,25 @@ function selectAnswer(e) {
 // console.log(currentQuestionIndex);
 
 function completedQuestions() {
-    if (currentQuestionIndex === questions.length){
+    if (currentQuestionIndex === questions.length) {
         clearInterval(timer);
         endGame();
+        // var earlyComplete = timeLeft;
+       
     }
 }
+
+// function score() {
+
+
+// var scoreMultiplied = score * 10;
+// var totalScore = scoreMultiplied + earlyComplete;
+// console.log(scoreMultiplied);
+
+
+
+// }
+
 
 
 
@@ -197,20 +213,19 @@ function completedQuestions() {
 function endGame() {
     clearInterval(timer);
 
-timesUpEl.classList.remove('hide')
-questionContainerEl.classList.add('hide');
-outOf100El.innerHTML = score
-noOfCorrectQuestionsEl.innerHTML = parseInt(score / 20);
+    timesUpEl.classList.remove('hide')
+    questionContainerEl.classList.add('hide');
+    outOf100El.innerHTML = (score * 10) + timeLeft;
+    noOfCorrectQuestionsEl.innerHTML = score;
 
-// `
-// <h2>Game over!</h2>
-// <h3>You got a ` + score +  ` /100!</h3>
-// <h3>That means you got ` + score / 20 +  ` questions correct!</h3>
-// <input type="text" id="name" placeholder="First name"> 
-// <button onclick="setScore()">Set score!</button>`;
+    // `
+    // <h2>Game over!</h2>
+    // <h3>You got a ` + score +  ` /100!</h3>
+    // <h3>That means you got ` + score / 20 +  ` questions correct!</h3>
+    // <input type="text" id="name" placeholder="First name"> 
+    // <button onclick="setScore()">Set score!</button>`;
 
-questionContainerEl.innerHTML = gameOver;
+    // questionContainerEl.innerHTML = gameOver;
 
 }
 
-var score
