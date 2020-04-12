@@ -12,10 +12,13 @@ var outOf100El = document.querySelector("#outOf");
 var noOfCorrectQuestionsEl = document.querySelector("#correctQuestions");
 var initialsEl = document.querySelector("#name");
 var setScoreEl = document.querySelector("#setScore");
-var playAgainEl = document.querySelector(".playAgain");
+var playAgain1El = document.querySelector("#playAgain1");
+var playAgain2El = document.querySelector("#playAgain2");
 var clearScoresEl = document.querySelector("#clearScores");
 var leaderboardEl = document.querySelector("#leaderboard");
 var highscores = JSON.parse(localStorage.getItem("scores")) || [];
+
+
 
 
 // Event listener to listen for a click on the Start Quiz button to initialise the startQuiz function
@@ -151,7 +154,7 @@ function selectAnswer(e) {
     }
     // checkAnswer();
     var betweenQuestionTimer;
-    var timeBetweenQuestions = 2;
+    var timeBetweenQuestions = 1;
     betweenQuestionTimer = setInterval(function () {
         timeBetweenQuestions--;
         if (timeBetweenQuestions <= 0) {
@@ -190,6 +193,47 @@ function endGame() {
 
 }
 
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+
+var preventDuplicate = 0;
+btn.onclick = function() {
+
+  preventDuplicate++;
+  modal.style.display = "block";
+  if (preventDuplicate <= 1){
+    printHighScore();
+  }
+
+   
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  
+    // while (leaderboardEl.firstChild) {
+    //     leaderboardEl.removeChild(leaderboardEl.firstChild);
+    // }
+
+    if (event.target == modal) {
+    modal.style.display = "none";
+  }
+  
+}
+
 setScoreEl.addEventListener("click", setHighScore);
 
 function setHighScore() {
@@ -198,31 +242,14 @@ function setHighScore() {
         highScore: parseInt(window.totalScore)
     }
 
-    console.log(userObj);
-    highscores.push(userObj);
-    console.log(highscores);
-    localStorage.setItem("scores", JSON.stringify(highscores));
-    
-    
-    // localStorage.setItem("highscore", totalScore);
-    // localStorage.setItem("highscoreName",  initialsEl.value);
-    // getHighScore();
+    highscores.push(userObj);   
+    localStorage.setItem("scores", JSON.stringify(highscores));  
     printHighScore();
+    modal.style.display = "block";
+    
+
 }
 
-// function getHighScore() {
-//     var userNameList = document.querySelector("#userName");
-//     var userHighScoreList = document.querySelector("#userHighScore");
-//     // var initials = localStorage.getItem("highscoreName");
-//     // var userHighscore = localStorage.getItem("highscore");
-
-//     // userNameList.innerText = initials;
-//     // userHighScoreList.innerText = userHighscore;
-
-//     var finalScores = localStorage.getItem("scores");
-//     userNameList.innerText = finalScores;
-
-// }
 
 function printHighScore() {
 
@@ -250,30 +277,22 @@ function scoresSorted(array, key) {
     });
   }
 
-// Get the modal
-var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+playAgain1El.addEventListener("click", function() {
+    window.location.reload()
+});
 
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+playAgain2El.addEventListener("click", function() {
+    window.location.reload()
+});
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+clearScoresEl.addEventListener("click", function () {
+    localStorage.removeItem("scores");
+    alert("Scores cleared");
+    window.location.reload();
+})
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+
 
 
