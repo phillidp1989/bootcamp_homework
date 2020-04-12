@@ -270,8 +270,12 @@ function setHighScore() {
     highscores.push(userObj);
     localStorage.setItem("scores", JSON.stringify(highscores));
 
-    // Once clicked, the printHighScore function is called which appends the user name array to the modal which is then unhidden
+    // Once clicked, the printHighScore function is called which appends the user name array to the modal which is then unhidden. The while loop removes any children of the leaderboardelement that were created upon the user clicking the Highscore button.
 
+    
+    while (leaderboardEl.lastChild) {
+        leaderboardEl.removeChild(leaderboardEl.lastChild)
+    }
     printHighScore();
     modal.style.display = "block";
 
