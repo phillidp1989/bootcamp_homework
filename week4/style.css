@@ -294,16 +294,22 @@ nav {
       opacity: 0;
   }
   
-  @keyframes comeFromBottom{
-    0%{
-      opacity:0;
-      transform:translateY(40px);
-    } 
-    100%{
-      opacity:1;
-      transform:translateY(0);
+  @media screen and (max-width: 768px) {
+    nav {
+      margin-bottom: 100px;
+    }
+
+    #myBtn {
+      font-size: 10px;
+    }
+
+    #timerDiv {
+      font-size: 9px;
     }
   }
 
+  #name {
+    margin-bottom: 10px;
+  }
 
 

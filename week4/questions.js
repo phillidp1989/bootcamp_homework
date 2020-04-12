@@ -36,10 +36,10 @@ var questions = [{
 
     question: 'The condition in an if / else statement is enclosed within...?',
     answers: [
-        { text: 'Quotes', correct: false },
-        { text: 'Curly Braces', correct: false },
-        { text: 'Parentheses', correct: true },
-        { text: 'Square Brackets', correct: false }
+        { text: '" "', correct: false },
+        { text: '{ }', correct: false },
+        { text: '( )', correct: true },
+        { text: '[ ]', correct: false }
     ],
     correctAnswer: 'Parentheses'
 },
@@ -228,13 +228,12 @@ var preventDuplicate = 0;
 
 btn.onclick = function () {
 
-    preventDuplicate++;
-    console.log(preventDuplicate);
-    window.counter = preventDuplicate
+     
     modal.style.display = "block";
-    if (preventDuplicate <= 1) {
-        printHighScore();
+    while (leaderboardEl.lastChild) {
+        leaderboardEl.removeChild(leaderboardEl.lastChild)
     }
+    printHighScore();
 
 
 }
