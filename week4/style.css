@@ -66,6 +66,10 @@ nav {
     margin: 20px 0;
 }
 
+button {
+  cursor: pointer;
+}
+
 #myBtn {
 	cursor: pointer;
 	position: relative;
