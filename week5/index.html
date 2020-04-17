@@ -30,13 +30,79 @@
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
+      <p id="clock" class="lead"></p>    
+      
     </header>
     
-    <!-- Timeblocks -->
+    <!-- Timeblocks to include a row for each hour of the day, Each row will contain a time column, a user input column and a save column -->
 
     <div class="container">
-      <!-- Timeblocks go here -->
-    </div>
+    
+      <div id ="9" class='row time-block'> <!--9am row-->
+        <div class="hour col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            9am
+        </div>
+        <textarea class="col-xs-9 col-sm-9 col-md-9 col-lg-9 description" data-hour='9' id='9'></textarea>
+        <button class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fas fa-save btn-block saveBtn" id="btn9"></button>
+      </div>
+      <div id ="10" class='row time-block'> <!--10am row-->
+        <div class="hour col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            10am
+        </div>
+        <textarea class="col-xs-9 col-sm-9 col-md-9 col-lg-9 description" data-hour='10' id='10'></textarea>
+        <button class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fas fa-save btn-block saveBtn" id="btn10"></button>
+      </div>
+      <div  id ="11" class='row time-block'> <!--11am row-->
+        <div class="hour col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            11am
+        </div>
+        <textarea class="col-xs-9 col-sm-9 col-md-9 col-lg-9 description" data-hour='11' id='11'></textarea>
+        <button class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fas fa-save btn-block saveBtn" id="btn11"></button>
+      </div>
+      <div  id ="12" class='row time-block'> <!--12pm row-->
+        <div class="hour col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            12pm
+        </div>
+        <textarea class="col-xs-9 col-sm-9 col-md-9 col-lg-9 description" data-hour='11' id='12'></textarea>
+        <button class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fas fa-save btn-block saveBtn" id="btn11"></button>
+      </div>
+      <div  id ="13" class='row time-block'> <!--1pm row-->
+        <div class="hour col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            1pm
+        </div>
+        <textarea class="col-xs-9 col-sm-9 col-md-9 col-lg-9 description" data-hour='13' id='13'></textarea>
+        <button class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fas fa-save btn-block saveBtn" id="btn13"></button>
+      </div>
+      <div  id ="14" class='row time-block'> <!--2pm row-->
+        <div class="hour col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            2pm
+        </div>
+        <textarea class="col-xs-9 col-sm-9 col-md-9 col-lg-9 description" data-hour='14' id='14'></textarea>
+        <button class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fas fa-save btn-block saveBtn" id="btn14"></button>
+      </div>
+      <div  id ="15" class='row time-block'> <!--3pm row-->
+        <div class="hour col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            3pm
+        </div>
+        <textarea class="col-xs-9 col-sm-9 col-md-9 col-lg-9 description" data-hour='15' id='15'></textarea>
+        <button class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fas fa-save btn-block saveBtn" id="btn15"></button>
+      </div>
+      <div  id ="16" class='row time-block'> <!--4pm row-->
+        <div class="hour col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            4pm
+        </div>
+        <textarea class="col-xs-9 col-sm-9 col-md-9 col-lg-9 description" data-hour='16' id='16'></textarea>
+        <button class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fas fa-save btn-block saveBtn" id="btn16"></button>
+      </div>
+      <div  id ="17" class='row time-block'> <!--5pm row-->
+        <div class="hour col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            5pm
+        </div>
+        <textarea class="col-xs-9 col-sm-9 col-md-9 col-lg-9 description" data-hour='17' id='17'></textarea>
+        <button class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fas fa-save btn-block saveBtn" id="btn17"></button>
+      </div>
+    </div> <!--End of container -->
+    <div id="clearBtnContainer"><button class= "button" id="clearEventsBtn">Clear all events</button></div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
