@@ -110,32 +110,32 @@ $(document).ready(function() {
     
     // Function to display saved events when the page is (re)loaded
 
-    function getEvents() {
+    // function getEvents() {
         
-        $(".description").each(function () {
+    //     $(".description").each(function () {
             
-            var hourId = $(this).parent().attr("id");
+    //         var hourId = $(this).parent().attr("id");
             
-            eventDescription = localStorage.getItem(hourId);
+    //         eventDescription = localStorage.getItem(hourId);
 
-            $(this).val(eventDescription)
-        })
-    }
+    //         $(this).val(eventDescription)
+    //     })
+    // }
 
-    getEvents();
+    // getEvents();
 
     // Function to save events input by user to local storage
 
     
-    $(".saveBtn").on("click", function() {
-        var hourTimeblock = $(this).parent(".time-block").attr("id");
-        var timeblockEvent = $(this).siblings(".description").val();
+    // $(".saveBtn").on("click", function() {
+    //     var hourTimeblock = $(this).parent(".time-block").attr("id");
+    //     var timeblockEvent = $(this).siblings(".description").val();
         
 
-        localStorage.setItem(hourTimeblock, timeblockEvent);
+    //     localStorage.setItem(hourTimeblock, timeblockEvent);
         
 
-    })    
+    // })    
 
     // Function to clear all events
     
@@ -152,8 +152,96 @@ $(document).ready(function() {
     })
 
 
-    
+    function getEvents() {
+        var localstorage9 = localStorage.getItem("9am");
+        $("#9").val(localstorage9);
 
+        var localstorage10 = localStorage.getItem("10am");
+        $("#10").val(localstorage10);
+
+        var localstorage11 = localStorage.getItem("11am");
+        $("#11").val(localstorage11);
+
+        var localstorage12 = localStorage.getItem("12pm");
+        $("#12").val(localstorage12);
+
+        var localstorage13 = localStorage.getItem("1pm");
+        $("#13").val(localstorage13);
+
+        var localstorage14 = localStorage.getItem("2pm");
+        $("#14").val(localstorage14);
+
+        var localstorage15 = localStorage.getItem("3pm");
+        $("#15").val(localstorage15);
+
+        var localstorage16 = localStorage.getItem("4pm");
+        $("#16").val(localstorage16);
+
+        var localstorage17 = localStorage.getItem("5pm");
+        $("#17").val(localstorage17);
+
+
+    }
+
+    getEvents();
+
+    // Multiple event listeners to save text input to local storage when each save button is pressed
+
+    $("#btn9").on("click", function() {
+        var event9 = $("#9").val();
+        localStorage.setItem("9am", event9);
+
+    })
+
+    $("#btn10").on("click", function() {
+        var event10 = $("#10").val();
+        localStorage.setItem("10am", event10);
+
+    })
+
+    $("#btn11").on("click", function() {
+        var event11 = $("#11").val();
+        localStorage.setItem("11am", event11);
+
+    })
+
+    $("#btn12").on("click", function() {
+        var event12 = $("#12").val();
+        localStorage.setItem("12pm", event12);
+
+    })
+
+    $("#btn13").on("click", function() {
+        var event13 = $("#13").val();
+        localStorage.setItem("1pm", event13);
+
+    })
+
+    $("#btn14").on("click", function() {
+        var event14 = $("#14").val();
+        localStorage.setItem("2pm", event14);
+
+    })
+
+    $("#btn15").on("click", function() {
+        var event15 = $("#15").val();
+        localStorage.setItem("3pm", event15);
+
+    })
+
+    $("#btn16").on("click", function() {
+        var event16 = $("#16").val();
+        localStorage.setItem("4pm", event16);
+
+    })
+
+    $("#btn17").on("click", function() {
+        var event17 = $("#17").val();
+        localStorage.setItem("5pm", event17);
+
+    })
+
+    
 
 });
 
