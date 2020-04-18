@@ -133,3 +133,17 @@ textarea{
   margin-top: 30px;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .hour {
+    width: 20%;
+  }
+
+  .description {
+    width: 60%;
+  }
+
+  .saveBtn {
+    width: 20%;
+  }
+}
