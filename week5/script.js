@@ -29,28 +29,28 @@ console.log(hourMinuteSecondSplit);
 $(document).ready(function() {
 
       
-    var CurrentTime = moment().format("h:mm:ss")
-    var secMinHourSplit = CurrentTime.split(":");
-    var secondsToRefresh = 60 - parseInt(secMinHourSplit[2]);
-    var minutesToRefresh = 59 - parseInt(secMinHourSplit[1]); 
-    var totalTimetoRefresh = secondsToRefresh + (minutesToRefresh*60); 
-    var secondsElapsedSinceRefresh = 0;
+    // var CurrentTime = moment().format("h:mm:ss")
+    // var secMinHourSplit = CurrentTime.split(":");
+    // var secondsToRefresh = 60 - parseInt(secMinHourSplit[2]);
+    // var minutesToRefresh = 59 - parseInt(secMinHourSplit[1]); 
+    // var totalTimetoRefresh = secondsToRefresh + (minutesToRefresh*60); 
+    // var secondsElapsedSinceRefresh = 0;
     
-    var refreshInterval = setInterval(function() {
-        secondsElapsedSinceRefresh++
-        if(secondsElapsedSinceRefresh === totalTimetoRefresh) {
-            var refreshYesNo = confirm("Would you like to refresh your day planner? Any unsaved changes will be lost.")
+    // var refreshInterval = setInterval(function() {
+    //     secondsElapsedSinceRefresh++
+    //     if(secondsElapsedSinceRefresh === totalTimetoRefresh) {
+    //         var refreshYesNo = confirm("Would you like to refresh your day planner? Any unsaved changes will be lost.")
 
-            if(refreshYesNo) {
-                window.location.reload();
-            } else {
-                alert("Your planner has not been automatically updated. Please refresh your page manually ")
+    //         if(refreshYesNo) {
+    //             window.location.reload();
+    //         } else {
+    //             alert("Your planner has not been automatically updated. Please refresh your page manually ")
                 
-                clearInterval(refreshInterval);
-            }
+    //             clearInterval(refreshInterval);
+    //         }
 
-        }
-    },1000);
+    //     }
+    // },1000);
 
     
 
@@ -85,6 +85,8 @@ $(document).ready(function() {
 
         $(".description").each(function() {
 
+            $(this).removeClass("present past future");
+
         // Added parseInt function as my 9am timblock was being assigned with the incorrect class
 
             var descriptionId = parseInt($(this).attr("id"));
@@ -105,7 +107,7 @@ $(document).ready(function() {
 
     // Function called to update the colours based on the current hour and a setInterval function used to update this every second
     updateCurrentColour();
-    setInterval(updateCurrentColour, 1000)
+    setInterval(updateCurrentColour, 1000);
 
     
     // Function to display saved events when the page is (re)loaded
@@ -183,6 +185,8 @@ $(document).ready(function() {
 
     }
 
+    // Calling the getEvents function to ensure that data saved to local storage is displayed upon reloading of the day planner
+
     getEvents();
 
     // Multiple event listeners to save text input to local storage when each save button is pressed
@@ -240,6 +244,7 @@ $(document).ready(function() {
         localStorage.setItem("5pm", event17);
 
     })
+
 
     
 
