@@ -4,7 +4,7 @@
 
 In this project, I was tasked with creating a day planner in which the user could record events during a specific timeblock during the day which would then be saved to the browser.
 
-![image] (https://user-images.githubusercontent.com/61989740/79689323-edae4280-824b-11ea-8f17-38d0f7d93468.png) 
+<img src="https://user-images.githubusercontent.com/61989740/79689323-edae4280-824b-11ea-8f17-38d0f7d93468.png" width = "200"> 
 
 ## Link to deployed application
 
