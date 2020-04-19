@@ -1,13 +1,12 @@
 // Pseudo code
 
 // Create three columns - one for the time slot, one for the user input and one for save icon
-// Create a fourth element allowing the user to click a button to remove the event without manually clearing the text
-// Refresh the browser on the hour to update which events have passed
-// Create button to remove all data from local storage
+// Create a function to compare current hour with the hour of the timeblock (through element id)
 // When user hits save, event(s) should be saved to local storage and browser updated to reflect the current time
-// BONUS - Create alert 15 minutes before event is due 
-// BONUS - create button next to each event to move it up and/or down the list of time slots
-// BONUS - when event is input, this creates an element which can then be removed by clicking an x or can be dragged and dropped into another timeslot
+// Function to get items from local storage and save them to the appropriate timeblock
+// Create button to remove all data from local storage
+// BONUS - Add night mode feature 
+
 
 $(document).ready(function() {       
 
@@ -20,8 +19,7 @@ $(document).ready(function() {
         var timeP = (moment().format("hh:mm:ss A"));
         $("#currentDay").text(dateP);
         $("#clock").text(timeP); 
-        var updatingHour = timeP.split(":");         
-        // return (updatingHour[0]);
+        
 
     }
     
@@ -40,11 +38,13 @@ $(document).ready(function() {
 
         $(".description").each(function() {
 
+    // Removing all tense classes ensures that there are no conflicts in the css code if a new class is added
+
             $(this).removeClass("present past future");
 
     // Added parseInt function as my 9am timblock was being assigned with the incorrect class
 
-            var descriptionId = parseInt($(this).attr("id"));
+            var descriptionId = parseInt($(this).attr("id"));            
 
     // If else statement to compare the current hour with the ID of each text area field which corresponds to the timeblock it represents
 
@@ -121,57 +121,81 @@ $(document).ready(function() {
 
     $("#btn9").on("click", function() {
         var event9 = $("#9").val();
+        alert("Saved");
         localStorage.setItem("9am", event9);
         
     })
 
     $("#btn10").on("click", function() {
         var event10 = $("#10").val();
+        alert("Saved");
         localStorage.setItem("10am", event10);
-
+        
     })
-
+    
     $("#btn11").on("click", function() {
         var event11 = $("#11").val();
+        alert("Saved");
         localStorage.setItem("11am", event11);
-
+        
     })
-
+    
     $("#btn12").on("click", function() {
         var event12 = $("#12").val();
+        alert("Saved");
         localStorage.setItem("12pm", event12);
-
+        
     })
-
+    
     $("#btn13").on("click", function() {
         var event13 = $("#13").val();
+        alert("Saved");
         localStorage.setItem("1pm", event13);
-
+        
     })
-
+    
     $("#btn14").on("click", function() {
         var event14 = $("#14").val();
+        alert("Saved");
         localStorage.setItem("2pm", event14);
-
+        
     })
-
+    
     $("#btn15").on("click", function() {
         var event15 = $("#15").val();
+        alert("Saved");
         localStorage.setItem("3pm", event15);
-
+        
     })
-
+    
     $("#btn16").on("click", function() {
         var event16 = $("#16").val();
+        alert("Saved");
         localStorage.setItem("4pm", event16);
-
+        
     })
-
+    
     $("#btn17").on("click", function() {
         var event17 = $("#17").val();
+        alert("Saved");
         localStorage.setItem("5pm", event17);
 
     })
+
+    // Function to change the colour of the background by adding a class to the body element when it reaches 6pm and removal of the class at midnight
+
+    function night() {
+        
+        var currentHourNight = moment().format("HH");
+        
+        if (currentHourNight > 17) {
+            $("body").addClass("night")
+        } else {
+            $("body").removeClass("night")
+        }
+    }
+
+    setInterval(night, 1000);
 
 });
 
