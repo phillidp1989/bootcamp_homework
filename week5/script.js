@@ -83,32 +83,17 @@ $(document).ready(function() {
     // Function to set the data from local storage to the relevant textarea element upon reloading of the page
 
     function getEvents() {
-        var localstorage9 = localStorage.getItem("9am");
-        $("#9").val(localstorage9);
 
-        var localstorage10 = localStorage.getItem("10am");
-        $("#10").val(localstorage10);
 
-        var localstorage11 = localStorage.getItem("11am");
-        $("#11").val(localstorage11);
+        $(".description").each(function() {
+            var btnID = $(this).siblings(".saveBtn").attr("id");
+            var eventData = localStorage.getItem(btnID);
+            console.log(btnID);
+            console.log(eventData);
+            $(this).val(eventData);
 
-        var localstorage12 = localStorage.getItem("12pm");
-        $("#12").val(localstorage12);
-
-        var localstorage13 = localStorage.getItem("1pm");
-        $("#13").val(localstorage13);
-
-        var localstorage14 = localStorage.getItem("2pm");
-        $("#14").val(localstorage14);
-
-        var localstorage15 = localStorage.getItem("3pm");
-        $("#15").val(localstorage15);
-
-        var localstorage16 = localStorage.getItem("4pm");
-        $("#16").val(localstorage16);
-
-        var localstorage17 = localStorage.getItem("5pm");
-        $("#17").val(localstorage17);
+        })
+        
 
         
     }    
@@ -117,70 +102,19 @@ $(document).ready(function() {
 
     getEvents();
 
-    // Multiple event listeners to save text input to local storage when each save button is pressed
+    // Event listener on the saveBtn class which, through implicit iteration, loops through all elements with this class and adds the event listener to all buttons
 
-    $("#btn9").on("click", function() {
-        var event9 = $("#9").val();
-        alert("Saved");
-        localStorage.setItem("9am", event9);
-        
+
+
+    $(".saveBtn").on("click", function() {
+        var timeKey = $(this).attr("id");
+        var timeValue = $(this).siblings(".description").val();
+        localStorage.setItem(timeKey, timeValue);
+        console.log(timeKey);
+        console.log(timeValue);
     })
 
-    $("#btn10").on("click", function() {
-        var event10 = $("#10").val();
-        alert("Saved");
-        localStorage.setItem("10am", event10);
-        
-    })
     
-    $("#btn11").on("click", function() {
-        var event11 = $("#11").val();
-        alert("Saved");
-        localStorage.setItem("11am", event11);
-        
-    })
-    
-    $("#btn12").on("click", function() {
-        var event12 = $("#12").val();
-        alert("Saved");
-        localStorage.setItem("12pm", event12);
-        
-    })
-    
-    $("#btn13").on("click", function() {
-        var event13 = $("#13").val();
-        alert("Saved");
-        localStorage.setItem("1pm", event13);
-        
-    })
-    
-    $("#btn14").on("click", function() {
-        var event14 = $("#14").val();
-        alert("Saved");
-        localStorage.setItem("2pm", event14);
-        
-    })
-    
-    $("#btn15").on("click", function() {
-        var event15 = $("#15").val();
-        alert("Saved");
-        localStorage.setItem("3pm", event15);
-        
-    })
-    
-    $("#btn16").on("click", function() {
-        var event16 = $("#16").val();
-        alert("Saved");
-        localStorage.setItem("4pm", event16);
-        
-    })
-    
-    $("#btn17").on("click", function() {
-        var event17 = $("#17").val();
-        alert("Saved");
-        localStorage.setItem("5pm", event17);
-
-    })
 
     // Function to change the colour of the background by adding a class to the body element when it reaches 6pm and removal of the class at midnight
 
