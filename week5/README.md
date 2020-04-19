@@ -1,4 +1,4 @@
-## Day Planner
+# Day Planner
 
 In this project, I was tasked with creating a day planner in which the user could record events during a specific timeblock during the day which would then be saved to the browser.
 
