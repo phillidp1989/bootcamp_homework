@@ -51,7 +51,7 @@ THEN the text for that event is saved in local storage<br><br>
 
 The save button class was targeted and an event listener added using JQuery. Upon clickng the save button, the value of the textarea being saved is stored in local storage and the user is presented with an alert message confirming that their event has been saved.</li>
 
-<li>WHEN I refresh the page
+<li>WHEN I refresh the page<br>
 THEN the saved events persist<br><br>
 
 Using the localStorage.getItem function, each of the relevant text areas is autopopulated with the values saved to local storage upon reloading of the application.</li>
