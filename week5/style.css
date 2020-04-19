@@ -154,4 +154,12 @@ textarea{
   .saveBtn {
     width: 20%;
   }
+
+}
+
+@media (max-width: 375px) {
+  
+  .jumbotron > h1 {
+    font-size: 40px !important;
+  }
 }
