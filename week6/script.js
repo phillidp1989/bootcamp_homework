@@ -133,7 +133,7 @@ $(document).ready(function () {
 
     
 
-    $("#searchBtn").on("click", function () {
+    $("#searchBtn").on("click", function(event) {
         // Prevent default behaviour of the submit button i.e. retain user input text
         event.preventDefault();
 
@@ -142,7 +142,7 @@ $(document).ready(function () {
         localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
         currentWeather();
         renderSearchHistory();
-        return false;
+        
 
     })
 
@@ -157,16 +157,18 @@ $(document).ready(function () {
             $(".cityHistory").prepend(historyButton);
         }
 
+        $(".city").on("click", function() {
+        
+            $("#searchField").val("");
+            $("#searchField").val($(this).text());
+            currentWeather();
+        })
+
     }
 
     renderSearchHistory();
     
-    $(".city").on("click", function() {
-        
-        $("#searchField").val("");
-        $("#searchField").val($(this).text());
-        currentWeather();
-    })
+    
 
 
 
