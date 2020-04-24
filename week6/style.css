@@ -21,23 +21,15 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
-/* .mainBody {
-    display: flex;
-    height: 100%;
-    align-items: stretch;
-} */
 
 .sidebar {
     
-    /* height: 100%;
-    flex: 1; */
-    background-color: seashell;
-    /* position: fixed; */
-    /* overflow: auto; */
+    
+    background-color: seashell;    
     padding-left: 25px;
     padding-top: 25px;
     padding-bottom: 25px;
-    /* float: left; */
+    
     
 }
 
@@ -143,8 +135,12 @@ form {
  }
 
  .currentWeather {
-   padding-top: 25px;
+   padding: 25px;
    margin-bottom: 25px;
+   margin-top: 20px;   
+   border: 1px solid black;
+   border-radius: 25px;
+
  }
 
  #uvIndex {
@@ -160,6 +156,7 @@ form {
  .yellow {
   background-color: yellow;
   color: black !important;
+  border: 1px solid black;
 }
 
 .orange {

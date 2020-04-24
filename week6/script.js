@@ -40,7 +40,7 @@ $(document).ready(function () {
         // Define variable for API url
 
         var apiRequest = "http://api.openweathermap.org/data/2.5/weather?q=" + citySearch + "&APPID=" + key;
-        var uvRequest =
+        
 
             $.ajax({
                 url: apiRequest,
@@ -50,6 +50,7 @@ $(document).ready(function () {
                 // console.log(response);
 
                 var cityName = response.name;
+                var countryName = response.sys.country;
                 var currentTempCelsius = (response.main.temp - 273.15).toFixed(2);
                 var currentTempF = ((response.main.temp - 273.15) * 1.80 + 32).toFixed(2);
                 var currentHumidity = response.main.humidity;
@@ -57,16 +58,16 @@ $(document).ready(function () {
                 var lat = response.coord.lat;
                 var lon = response.coord.lon;
                 var currentDateTime = moment().format("LLL");
-                $("#cityDate").html("<h2>" + cityName + " (" + currentDateTime + ")" + "<h2>");
+                $("#cityDate").html("<h2>" + cityName + ", " + countryName + " (" + currentDateTime + ")" + "<h2>");
                 $("#currentIcon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
                 // $("#temp").text(currentTempCelsius + "° Celsius");
                 $("#humidity").text(currentHumidity + "%");
                 $("#windSpeed").text(currentWindSpeed + " MPH");
 
                 if (celsiusYN) {
-                    $("#temp").text(currentTempCelsius + "° Celsius");
+                    $("#temp").text(currentTempCelsius + "°C");
                 } else {
-                    $("#temp").text(currentTempF + "° Farenheit");
+                    $("#temp").text(currentTempF + "°F");
                 }
 
                 
@@ -101,6 +102,42 @@ $(document).ready(function () {
 
     }
 
+    function forecast() {
+        
+        userSearch = $("#searchField").val();
+        var citySearch = userSearch.trim();
+        var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&appid=" + key;
+        
+        $.ajax({
+            url: forecastUrl,
+            method: "GET"
+        }).then(function (response) {
+            var forecastDays = response.list;
+            var dayCount = 1;
+            for (var i = 0; i < forecastDays.length; i++) {                
+                var dateTime = forecastDays[i].dt_txt;
+                var date = dateTime.split(" ")[0];
+                var time = dateTime.split(" ")[1];
+                if (time === "12:00:00") {
+                    var day = date.split("-")[2];
+                    var month = date.split("-")[1];
+                    var year = date.split("-")[0];
+                    $("#day" + dayCount).children(".card-date").html(day + "/" + month + "/" + year);
+                    $("#day" + dayCount).children(".card-icon").html("<img src=https://openweathermap.org/img/w/" + forecastDays[i].weather[0].icon + ".png>" );
+                    $("#day" + dayCount).children(".card-temp").html("Temp: "+ ((forecastDays[i].main.temp - 273.15) * 1.80 + 32).toFixed(2) + "°F"); 
+                    $("#day" + dayCount).children(".card-humid").html("Humidity: " + forecastDays[i].main.humidity + "%"); 
+                    
+                    dayCount++;
+                    
+                }
+
+            }
+        })
+
+    }
+
+    
+    
 
 
     function tempConversion() {
@@ -125,10 +162,7 @@ $(document).ready(function () {
 
     })
 
-    function currentUV() {
-
-    }
-    
+      
 
 
     
@@ -137,11 +171,19 @@ $(document).ready(function () {
         // Prevent default behaviour of the submit button i.e. retain user input text
         event.preventDefault();
 
+        if (searchHistory.length > 7) {
+        
+        searchHistory.shift();
         searchHistory.push($("#searchField").val().charAt(0).toUpperCase() + $("#searchField").val().slice(1));
+
+    } else {
+        searchHistory.push($("#searchField").val().charAt(0).toUpperCase() + $("#searchField").val().slice(1));
+    }
         
         localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
         currentWeather();
         renderSearchHistory();
+        forecast();
         
 
     })
@@ -162,13 +204,18 @@ $(document).ready(function () {
             $("#searchField").val("");
             $("#searchField").val($(this).text());
             currentWeather();
+            forecast();
         })
 
     }
 
     renderSearchHistory();
     
-    
+    $("#clearHistory").on("click", function() {
+        $(".cityHistory").empty();
+        searchHistory = [];
+        localStorage.clear();
+    })
 
 
 
