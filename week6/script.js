@@ -170,6 +170,7 @@ $(document).ready(function () {
     $("#searchBtn").on("click", function(event) {
         // Prevent default behaviour of the submit button i.e. retain user input text
         event.preventDefault();
+        $(".weatherContainer").removeClass("hide");
 
         if (searchHistory.length > 7) {
         
@@ -201,7 +202,7 @@ $(document).ready(function () {
 
         $(".city").on("click", function() {
         
-            $("#searchField").val("");
+            $(".weatherContainer").removeClass("hide");
             $("#searchField").val($(this).text());
             currentWeather();
             forecast();
