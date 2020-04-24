@@ -1,0 +1,178 @@
+html {
+    height: 100%;
+  }
+  body {
+    min-height: 100%;
+  }
+#dashboardNav {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+    
+    
+     
+}
+
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* .mainBody {
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+} */
+
+.sidebar {
+    
+    /* height: 100%;
+    flex: 1; */
+    background-color: seashell;
+    /* position: fixed; */
+    /* overflow: auto; */
+    padding-left: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    /* float: left; */
+    
+}
+
+form {
+    
+    width: 100%;
+    position: relative;
+    display: flex;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+  }
+
+    
+  #searchField {
+    width: 80%;
+    border: 3px solid #00B4CC;
+    border-right: none;
+    padding: 5px;
+    height: 100%;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+    
+  }
+  
+  #searchField:focus{
+    color: #00B4CC;
+  }
+  
+  #searchBtn {
+    width: 40px;
+    height: 100%;
+    border: 1px solid #00B4CC;
+    background: #00B4CC;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  /*Resize the wrap to see the search bar change!*/
+  .wrap{
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .weatherContainer {
+      flex: 3;
+  }
+
+  .btn {
+      height: 40px;
+      border: .5px solid black;
+  }
+
+  #clearHistory {
+      
+    margin-top: 20px;
+      
+  }
+
+  .mainBody {
+      width: auto !important;
+  }
+
+ .tempDiv {
+   display: flex;
+   margin-bottom: 10px;
+ }
+
+ .tempDiv > p {
+  margin: auto 0;
+}
+
+ #celFar {
+   margin-left: 20px;
+   
+   
+   
+ }
+
+ #cityDate {
+   margin-bottom: 0;
+   padding-top: 15px;
+ }
+
+ #cityDateIcon {
+   display: flex;
+ }
+
+ #currentIcon {
+   margin-left: 20px;
+   height: 80px;
+   width: 80px;
+   
+
+ }
+
+ .currentWeather {
+   padding-top: 25px;
+   margin-bottom: 25px;
+ }
+
+ #uvIndex {
+   padding: 5px;
+   color: white;
+   border-radius: 10px;
+ }
+
+ .green {
+   background-color: green;
+ }
+
+ .yellow {
+  background-color: yellow;
+  color: black !important;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.red {
+  background-color: red;
+}
+
+.purple {
+  background-color: purple;
+}
+ 
+
+
