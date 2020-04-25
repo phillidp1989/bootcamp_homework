@@ -39,7 +39,7 @@ $(document).ready(function () {
 
         // Define variable for API url
 
-        var apiRequest = "http://api.openweathermap.org/data/2.5/weather?q=" + citySearch + "&APPID=" + key;
+        var apiRequest = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearch + "&APPID=" + key;
         
 
             $.ajax({
@@ -59,7 +59,7 @@ $(document).ready(function () {
                 var lon = response.coord.lon;
                 var currentDateTime = moment().format("LLL");
                 $("#cityDate").html("<h2>" + cityName + ", " + countryName + " (" + currentDateTime + ")" + "<h2>");
-                $("#currentIcon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+                $("#currentIcon").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
                 // $("#temp").text(currentTempCelsius + "° Celsius");
                 $("#humidity").text(currentHumidity + "%");
                 $("#windSpeed").text(currentWindSpeed + " MPH");
@@ -72,7 +72,7 @@ $(document).ready(function () {
 
                 
 
-                var uvRequest = "http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon
+                var uvRequest = "https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon
                 // console.log(uvRequest);
 
                 $.ajax({
@@ -106,7 +106,7 @@ $(document).ready(function () {
         
         userSearch = $("#searchField").val();
         var citySearch = userSearch.trim();
-        var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&appid=" + key;
+        var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&appid=" + key;
         
         $.ajax({
             url: forecastUrl,
