@@ -4,16 +4,16 @@ html {
   body {
     min-height: 100%;
   }
+
+/* Header */
+
 #dashboardNav {
     position: relative;
     width: 100%;
     height: 100px;
-    /* background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%); */
     background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
     color: whitesmoke;
-    
-    
-     
+ 
 }
 
 h1 {
@@ -23,22 +23,18 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
+/* Sidebar */
 
-.sidebar {
-    
-    
+.sidebar {        
     background-color: seashell;    
     padding-left: 25px;
     padding-top: 25px;
     padding-bottom: 25px;
     background-image: url(./Assets/heavy\ rain.png);
-    
-    
-    
+  
 }
 
-form {
-    
+form {    
     width: 100%;
     position: relative;
     display: flex;
@@ -63,6 +59,7 @@ form {
   
   #searchField:focus{
     color: #00B4CC;
+  
   }
   
   #searchBtn {
@@ -77,7 +74,7 @@ form {
     font-size: 20px;
   }
   
-  /*Resize the wrap to see the search bar change!*/
+  
   .wrap{
     width: 30%;
     position: absolute;
@@ -90,16 +87,16 @@ form {
       flex: 3;
   }
 
-  .btn {
-      /* height: 40px; */
+  .btn {      
       border: .5px solid black;
   }
 
-  #clearHistory {
-      
+  #clearHistory {      
     margin-top: 20px;
       
   }
+
+/* Main body of the app */
 
   .mainBody {
       width: auto !important;
@@ -116,10 +113,8 @@ form {
 }
 
  #celFar {
-   margin-left: 20px;
-   
-   
-   
+   margin-left: 20px; 
+      
  }
 
  #cityDate {
@@ -134,8 +129,7 @@ form {
  #currentIcon {
    margin-left: 20px;
    height: 80px;
-   width: 80px;
-   
+   width: 80px;  
 
  }
 
@@ -153,6 +147,8 @@ form {
    color: white;
    border-radius: 10px;
  }
+
+ /* Classes to change the UV Index colour */
 
  .green {
    background-color: green;
@@ -175,6 +171,8 @@ form {
 .purple {
   background-color: purple;
 }
+
+/* Hide class to hide the elements using display: none property */
 
 .hide {
   display: none;

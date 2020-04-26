@@ -15,138 +15,166 @@
 // Function to get Items from local storage to store them in the search history
 
 
+// Document.ready to ensure the following code is run when the browser is opened
 
 $(document).ready(function () {
+
+    // Defining global variables
 
     var key = "464a0053bf890f9650609bc40bb49e24";
     var userSearch;
     var celsiusYN = true;
-    // var searchHistory = [];
     var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-    // console.log(searchHistory);
 
 
-    // Function to call, retrieve and display current weather conditions
+    // Current Weather function to call, retrieve and display current weather conditions
 
     function currentWeather(citySearch) {
 
-        // Define variable for API key
+        // Assigning value to variable based on value of input BhxBrowser. Second variable trims and spaces
 
         userSearch = $("#searchField").val();
         var citySearch = userSearch.trim();
-        // console.log(userSearch);
 
 
         // Define variable for API url
 
         var apiRequest = "http://api.openweathermap.org/data/2.5/weather?q=" + citySearch + "&APPID=" + key;
-        
+
+        // ajax call to retrieve data using current weather API
+
+        $.ajax({
+            url: apiRequest,
+            method: "GET"
+        }).then(function (response) {
+
+            // Defining variables to hold data provided by API
+
+            var cityName = response.name;
+            var countryName = response.sys.country;
+            var currentTempCelsius = (response.main.temp - 273.15).toFixed(2);
+            var currentTempF = ((response.main.temp - 273.15) * 1.80 + 32).toFixed(2);
+            var currentHumidity = response.main.humidity;
+            var currentWindSpeed = response.wind.speed;
+            var lat = response.coord.lat;
+            var lon = response.coord.lon;
+
+            // Variable to hold the current date and time using moment.js
+
+            var currentDateTime = moment().format("LLL");
+
+            // jQuery functions to display API data in the application
+
+            $("#cityDate").html("<h2>" + cityName + ", " + countryName + " (" + currentDateTime + ")" + "<h2>");
+            $("#currentIcon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+            $("#humidity").text(currentHumidity + "%");
+            $("#windSpeed").text(currentWindSpeed + " MPH");
+
+            // If else statement to determine which metric the temperature is shown in based on the celsiusYN boolean value
+
+            if (celsiusYN) {
+                $("#temp").text(currentTempCelsius + "°C");
+            } else {
+                $("#temp").text(currentTempF + "°F");
+            }
+
+            // Defining variable containing UV index url
+
+            var uvRequest = "http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon
+
+            // Nested ajax call to make use of lat and lon data from first ajax call. This call s for the UV Index
 
             $.ajax({
-                url: apiRequest,
+                url: uvRequest,
                 method: "GET"
-            }).then(function (response) {
+            }).then(function (uvResponse) {
+                var uvIndex = uvResponse.value;
+                $("#uvIndex").text(uvIndex);
+                $("#uvIndex").removeClass("green yellow orange red purple");
 
-                // console.log(response);
+                // If statement to change the colour of the UV span depending on the UV index
 
-                var cityName = response.name;
-                var countryName = response.sys.country;
-                var currentTempCelsius = (response.main.temp - 273.15).toFixed(2);
-                var currentTempF = ((response.main.temp - 273.15) * 1.80 + 32).toFixed(2);
-                var currentHumidity = response.main.humidity;
-                var currentWindSpeed = response.wind.speed;
-                var lat = response.coord.lat;
-                var lon = response.coord.lon;
-                var currentDateTime = moment().format("LLL");
-                $("#cityDate").html("<h2>" + cityName + ", " + countryName + " (" + currentDateTime + ")" + "<h2>");
-                $("#currentIcon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-                // $("#temp").text(currentTempCelsius + "° Celsius");
-                $("#humidity").text(currentHumidity + "%");
-                $("#windSpeed").text(currentWindSpeed + " MPH");
-
-                if (celsiusYN) {
-                    $("#temp").text(currentTempCelsius + "°C");
+                if (parseInt(uvIndex) >= 0 && parseInt(uvIndex) <= 2) {
+                    $("#parseInt(uvIndex)").addClass("green");
+                } else if (parseInt(uvIndex) >= 3 && parseInt(uvIndex) <= 5) {
+                    $("#uvIndex").addClass("yellow");
+                } else if (parseInt(uvIndex) >= 6 && parseInt(uvIndex) <= 7) {
+                    $("#uvIndex").addClass("orange");
+                } else if (parseInt(uvIndex) >= 8 && parseInt(uvIndex) <= 10) {
+                    $("#uvIndex").addClass("red");
                 } else {
-                    $("#temp").text(currentTempF + "°F");
+                    $("#uvIndex").addClass("purple");
                 }
-
-                
-
-                var uvRequest = "http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon
-                // console.log(uvRequest);
-
-                $.ajax({
-                    url: uvRequest,
-                    method: "GET"
-                }).then(function (uvResponse) {
-                    var uvIndex = uvResponse.value;
-                    $("#uvIndex").text(uvIndex);
-                    $("#uvIndex").removeClass("green yellow orange red purple");
-
-                    // If statement to change the colour of the span depending on the UV index
-
-                    if (parseInt(uvIndex) >= 0 && parseInt(uvIndex) <= 2) {
-                        $("#parseInt(uvIndex)").addClass("green");
-                    } else if (parseInt(uvIndex) >= 3 && parseInt(uvIndex) <= 5) {
-                        $("#uvIndex").addClass("yellow");
-                    } else if (parseInt(uvIndex) >= 6 && parseInt(uvIndex) <= 7) {
-                        $("#uvIndex").addClass("orange");
-                    } else if (parseInt(uvIndex) >= 8 && parseInt(uvIndex) <= 10) {
-                        $("#uvIndex").addClass("red");
-                    } else {
-                        $("#uvIndex").addClass("purple");
-                    }
-                })
-
             })
+
+        })
 
     }
 
+    // Forecast function to call, retrieve and display 5 day forecast data using API
+
     function forecast() {
-        
+
+        // Assigning and defining variables
+
         userSearch = $("#searchField").val();
         var citySearch = userSearch.trim();
         var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&appid=" + key;
-        
+
+        // ajax call to forecast API
+
         $.ajax({
             url: forecastUrl,
             method: "GET"
         }).then(function (response) {
+
+            // Variable to hold object property which contains the relevant data
+
             var forecastDays = response.list;
+
+            // Variable to hold a counter to ensure data is displayed against the correct card in HTML (this will be incremented)
+
             var dayCount = 1;
-            for (var i = 0; i < forecastDays.length; i++) {                
+
+            // For loop to loop through all 40 properties of the response.list object returned by the API call
+
+            for (var i = 0; i < forecastDays.length; i++) {
+
+                // Variable to hold the date and time and a split() function is used to separate into an array
+
                 var dateTime = forecastDays[i].dt_txt;
                 var date = dateTime.split(" ")[0];
                 var time = dateTime.split(" ")[1];
+
+                // If else statement to display data only if the time is equal to 12:00:00. This ensures there will be data for consecutive days (API shows data at 3 hr intervals)
+
                 if (time === "12:00:00") {
                     var day = date.split("-")[2];
                     var month = date.split("-")[1];
                     var year = date.split("-")[0];
                     $("#day" + dayCount).children(".card-date").html(day + "/" + month + "/" + year);
-                    $("#day" + dayCount).children(".card-icon").html("<img src=http://openweathermap.org/img/w/" + forecastDays[i].weather[0].icon + ".png>" );
+                    $("#day" + dayCount).children(".card-icon").html("<img src=http://openweathermap.org/img/w/" + forecastDays[i].weather[0].icon + ".png>");
                     if (celsiusYN) {
-                        $("#day" + dayCount).children(".card-temp").html("Temp: "+ (forecastDays[i].main.temp - 273.15).toFixed(2) + "°C");
+                        $("#day" + dayCount).children(".card-temp").html("Temp: " + (forecastDays[i].main.temp - 273.15).toFixed(2) + "°C");
                     } else {
-                        $("#day" + dayCount).children(".card-temp").html("Temp: "+ ((forecastDays[i].main.temp - 273.15) * 1.80 + 32).toFixed(2) + "°F");
+                        $("#day" + dayCount).children(".card-temp").html("Temp: " + ((forecastDays[i].main.temp - 273.15) * 1.80 + 32).toFixed(2) + "°F");
                     }
-                    
-                     
-                    $("#day" + dayCount).children(".card-humid").html("Humidity: " + forecastDays[i].main.humidity + "%"); 
-                    
-                    dayCount++;
-                    
-                }
 
+                    $("#day" + dayCount).children(".card-humid").html("Humidity: " + forecastDays[i].main.humidity + "%");
+
+                    // Increments the counter at the end of each loop to make sure data is being posted to the correct card
+
+                    dayCount++;
+                }
             }
         })
-
     }
 
-    
-    
-
+    // Temperature conversion function
 
     function tempConversion() {
+
+        // If statement to assess which temp metric should be displayed based on boolean value defaulted to true in global variable
 
         if (celsiusYN) {
             $("#celFar").text("Convert to Celsius");
@@ -155,60 +183,78 @@ $(document).ready(function () {
             $("#celFar").text("Convert to Farenheit");
             celsiusYN = true;
         }
-
     }
+
+    // Function called within document.ready to make sure celsiusYN is evaluated
 
     tempConversion();
 
+    // Event listener on the temp button to run three functions
+
     $("#celFar").on("click", function () {
-        // console.log(currentTempF);
 
         tempConversion();
         currentWeather();
         forecast();
-
     })
 
-      
+    // Event listener on the search button
 
+    $("#searchBtn").on("click", function (event) {
 
-    
-
-    $("#searchBtn").on("click", function(event) {
         // Prevent default behaviour of the submit button i.e. retain user input text
+
         event.preventDefault();
+
+        // Remove hide class which then displays the weatherContainer and its contents
+
         $(".weatherContainer").removeClass("hide");
 
-        if (searchHistory.length > 7) {
-        
-        searchHistory.shift();
-        searchHistory.push($("#searchField").val().charAt(0).toUpperCase() + $("#searchField").val().slice(1));
+        // If statement to push searched for city to the array and if this exceeds 8 searches, the first city searched for will be sliced from the array
 
-    } else {
-        searchHistory.push($("#searchField").val().charAt(0).toUpperCase() + $("#searchField").val().slice(1));
-    }
-        
+        if (searchHistory.length > 7) {
+
+            searchHistory.shift();
+            searchHistory.push($("#searchField").val().charAt(0).toUpperCase() + $("#searchField").val().slice(1));
+
+        } else {
+            searchHistory.push($("#searchField").val().charAt(0).toUpperCase() + $("#searchField").val().slice(1));
+        }
+
+        // Searched for city saved to local storage
+
         localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+        // Three main functions called
+
         currentWeather();
         renderSearchHistory();
         forecast();
-        
+
 
     })
 
+    // renderSearchHistory function to display history in sidebar
+
     function renderSearchHistory() {
+
+        // Clears div of any content to avoid duplication
+
         $(".cityHistory").empty();
-        
+
+        // For loop to loop through cities in the array and create and prepend a button to the sidebar
+
         for (var i = 0; i < searchHistory.length; i++) {
             var historyButton = $("<button>")
-            // console.log(searchHistory[i]);
-            historyButton.addClass("city btn btn-light btn-lg btn-block");            
-            historyButton.text(searchHistory[i]);            
+            historyButton.addClass("city btn btn-light btn-lg btn-block");
+            historyButton.text(searchHistory[i]);
             $(".cityHistory").prepend(historyButton);
         }
 
-        $(".city").on("click", function() {
-        
+        // Event listener on the city buttons to run main functions to display current and forecasted weather
+
+        $(".city").on("click", function () {
+
             $(".weatherContainer").removeClass("hide");
             $("#searchField").val($(this).text());
             currentWeather();
@@ -218,14 +264,14 @@ $(document).ready(function () {
     }
 
     renderSearchHistory();
-    
-    $("#clearHistory").on("click", function() {
+
+    // Clear history function
+
+    $("#clearHistory").on("click", function () {
         $(".cityHistory").empty();
         $("#searchField").val("");
         searchHistory = [];
         localStorage.clear();
     })
-
-
 
 })
