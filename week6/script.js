@@ -66,7 +66,7 @@ $(document).ready(function () {
             // jQuery functions to display API data in the application
 
             $("#cityDate").html("<h2>" + cityName + ", " + countryName + " (" + currentDateTime + ")" + "<h2>");
-            $("#currentIcon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+            $("#currentIcon").attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
             $("#humidity").text(currentHumidity + "%");
             $("#windSpeed").text(currentWindSpeed + " MPH");
 
