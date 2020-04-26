@@ -2,7 +2,7 @@
 
 In this project, I was tasked with creating a weather dashboard which provides the user with the ability to search for a city and be presented with the current weather and the 5-day forecast.
 
-<img src="https://user-images.githubusercontent.com/61989740/80313950-32a31d80-87e6-11ea-8c85-9203274bd9ab.png> 
+<img src="https://user-images.githubusercontent.com/61989740/80313950-32a31d80-87e6-11ea-8c85-9203274bd9ab.png"> 
 
 ## Link to deployed application
 
