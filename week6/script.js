@@ -39,7 +39,7 @@ $(document).ready(function () {
 
         // Define variable for API url
 
-        var apiRequest = "http://api.openweathermap.org/data/2.5/weather?q=" + citySearch + "&APPID=" + key;
+        var apiRequest = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearch + "&APPID=" + key;
 
         // ajax call to retrieve data using current weather API
 
@@ -66,7 +66,7 @@ $(document).ready(function () {
             // jQuery functions to display API data in the application
 
             $("#cityDate").html("<h2>" + cityName + ", " + countryName + " (" + currentDateTime + ")" + "<h2>");
-            $("#currentIcon").attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
+            $("#currentIcon").attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
             $("#humidity").text(currentHumidity + "%");
             $("#windSpeed").text(currentWindSpeed + " MPH");
 
@@ -80,7 +80,7 @@ $(document).ready(function () {
 
             // Defining variable containing UV index url
 
-            var uvRequest = "http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon
+            var uvRequest = "https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon
 
             // Nested ajax call to make use of lat and lon data from first ajax call. This call s for the UV Index
 
@@ -119,7 +119,7 @@ $(document).ready(function () {
 
         userSearch = $("#searchField").val();
         var citySearch = userSearch.trim();
-        var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&appid=" + key;
+        var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&appid=" + key;
 
         // ajax call to forecast API
 
@@ -153,7 +153,7 @@ $(document).ready(function () {
                     var month = date.split("-")[1];
                     var year = date.split("-")[0];
                     $("#day" + dayCount).children(".card-date").html(day + "/" + month + "/" + year);
-                    $("#day" + dayCount).children(".card-icon").html("<img src=http://openweathermap.org/img/w/" + forecastDays[i].weather[0].icon + ".png>");
+                    $("#day" + dayCount).children(".card-icon").html("<img src=https://openweathermap.org/img/w/" + forecastDays[i].weather[0].icon + ".png>");
                     if (celsiusYN) {
                         $("#day" + dayCount).children(".card-temp").html("Temp: " + (forecastDays[i].main.temp - 273.15).toFixed(2) + "°C");
                     } else {
