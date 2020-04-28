@@ -25,21 +25,22 @@ $(document).ready(function () {
     var userSearch;
     var celsiusYN = true;
     var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-    
-    
+
+
     // Populate last searched city upon reload of the page
-    
-    if (searchHistory.length > 0){
+
+    if (searchHistory.length > 0) {
         $("#searchField").val(searchHistory[searchHistory.length - 1]);
-    currentWeather();
-    forecast();
-    $(".weatherContainer").removeClass("hide");;
-    
-} 
-    
-    
-    
-    
+        currentWeather();
+        forecast();
+        $(".weatherContainer").removeClass("hide");
+        $("#searchField").val("");
+
+    }
+
+
+
+
 
 
     // Current Weather function to call, retrieve and display current weather conditions
@@ -274,6 +275,7 @@ $(document).ready(function () {
             $("#searchField").val($(this).text());
             currentWeather();
             forecast();
+            $("#searchField").val("");
         })
 
     }
