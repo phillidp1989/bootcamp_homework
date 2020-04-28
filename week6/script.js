@@ -25,6 +25,21 @@ $(document).ready(function () {
     var userSearch;
     var celsiusYN = true;
     var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    
+    
+    // Populate last searched city upon reload of the page
+    
+    if (searchHistory.length > 0){
+        $("#searchField").val(searchHistory[searchHistory.length - 1]);
+    currentWeather();
+    forecast();
+    $(".weatherContainer").removeClass("hide");;
+    
+} 
+    
+    
+    
+    
 
 
     // Current Weather function to call, retrieve and display current weather conditions
