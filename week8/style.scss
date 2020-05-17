@@ -1,16 +1,35 @@
+// Imported font family for use on the modals
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600&subset=latin-ext');
+
+// Variables holding commonly used colours
+
 $primarycolour: rgb(155, 208, 226);
 $secondarycolour: #8380B6;
 $tertiarycolour: #C2CAE8;
+$fourthcolour: #111D4A;
+$fifthcolou: #8789C0;
 $contrastcolour: #45F0DF;
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: $primarycolour;
-    
-}
+
+// Main css styling
+
+
+
+html, body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    background-color: $tertiarycolour;
+  }
 
 .row {
     width: 100%;
+    border-top: 10px $contrastcolour solid;
+    margin-bottom: 0 !important;
+}
+
+::after {
+    content: none !important;
 }
 
 .nav-wrapper {
@@ -38,7 +57,7 @@ body {
 }
 
 .sidenav {
-    width: 200px !important;
+    width: 250px !important;
 }
 
 #details {
@@ -68,13 +87,31 @@ body {
     text-align: center;
 }
 
+.about-me-row {
+
+    background-color: $secondarycolour;
+    margin-bottom: 0 !important;
+    text-align: center;
+    
+    h1 {
+        margin: 0;
+        padding: 20px 0;
+        font-size: 3rem;
+        font-weight: bold;
+        
+    
+        }
+}
+
+
+
 #brand-statement {
-    background-image: url(https://ak.picdn.net/shutterstock/videos/1012349138/thumb/1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    // background-image: url(https://ak.picdn.net/shutterstock/videos/1012349138/thumb/1.jpg);
+    // background-repeat: no-repeat;
+    // background-size: cover;
     min-height: 450px;
     background-position: center;
-    color: white;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,7 +126,7 @@ body {
 }
 
 .heading {
-    background-color: $primarycolour;
+    background-color: $tertiarycolour;
     text-align: center;
 
     h1 {
@@ -97,6 +134,7 @@ body {
         padding: 20px 0;
         font-size: 3rem;
         font-weight: bold;
+        background-color: $secondarycolour;
     }
 
     .line {
@@ -120,35 +158,20 @@ body {
     }
 
     h4 {
-        color: #fff;
+        color: black;
         font-size: 25px;
     }
 
 }
 
-.expand-btn {
-    padding-bottom: 15px;
+.collapsible {
+    margin-top: 20px;
 }
 
 // Modals
 
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600&subset=latin-ext');
-
-$main-color: #9191E9;
-
 * {
   box-sizing: border-box;
-}
-
-html, body {
-  font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-}
-
-@media screen and (max-width: 768px) {
-  html, body {
-    font-size: 12px;
-  }
 }
 
 .container {
@@ -156,21 +179,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  height: 0;
 }
 
-.button {
-  text-decoration: none;
-  font-size: .875rem;
-  font-weight: 300;
-  text-transform: uppercase;
-  display: inline-block;
-  border-radius: 1.5rem;
-  background-color: #fff;
-  color: $main-color;
-  padding: 1rem 2rem;
-}
 
 .popup {
   display: flex;
@@ -185,41 +196,50 @@ html, body {
   z-index: 2;
   visibility: hidden;
   opacity: 0;
-  overflow: hiden;
+  overflow: visible;
   transition: .64s ease-in-out;
   &-inner {
     position: relative;
     bottom: -100vw;
     right: -100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    max-width: 800px;
-    max-height: 600px;
-    width: 60%;
+    // max-width: 800px;
+    // max-height: 600px;
+    width: 80%;
     height: 80%;
     background-color: #fff;
     transform: rotate(32deg);
     transition: .64s ease-in-out;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
   }
   &__photo {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 40%;
-    height: 100%;
-    overflow: hidden;
+    justify-content: center;
+    padding-top: 20px;
+    // align-items: flex-end;
+    width: 100%;
+    height: auto;
+    // overflow: hidden;
     img {
-      width: auto;
-      height: 100%;
+    //   width: auto;
+    //   height: 100%;
+      max-width: 80%;
+    max-height: auto;
     }
   }
   &__text {
-    display: flex;
+    // display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 60%;
+    width: 80%;
     height: 100%;
-    padding: 4rem;
+    overflow: visible;
+    text-align: center;
+    // padding: 4rem;
     h1 {
       font-size: 2rem;
       font-weight: 600;
@@ -231,6 +251,11 @@ html, body {
       font-size: .875rem;
       color: #686868;
       line-height: 1.5;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
     }
   }
   &:target {
@@ -244,8 +269,8 @@ html, body {
   }
   &__close {
     position: absolute;
-    right: -1rem;
-    top: -1rem;
+    right: 1px;
+    top: 1px;
     width: 3rem;
     height: 3rem;
     font-size: .875rem;
@@ -261,7 +286,50 @@ html, body {
   }
 }
 
+.education-header {
+    text-align: center;
+    h1 {
+        margin: 0;
+        padding: 20px 0;
+        font-size: 3rem;
+        font-weight: bold;
+        background-color: $secondarycolour;
+    }
+}
+
+.educ-ex {
+    text-align: center;
+
+    h4 {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    h5 {
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    .educ-img {
+        width: 100%;
+        height: 285px;
+        padding-top: 10px;
+    }
+}
+
 // Responsiveness
+
+@media only screen and (min-width: 375px) {
+    .popup__photo {
+        width: 80%;        
+    }
+}
+
+@media only screen and (min-width: 425px) {
+    .popup__photo {
+        width: 60%;        
+    }
+}
 
 @media only screen and (min-width: 768px) {
     #home {
@@ -270,6 +338,12 @@ html, body {
 
     .sidenav {
         width: 300px !important;
+    }
+
+    .about-me-row {
+        h1 {
+            font-size: 4.2rem;
+        }
     }
     
     #about-me {
@@ -301,6 +375,112 @@ html, body {
             font-size: auto;
         }
     }
+
+    .popup__photo {
+        width: 40%;        
+    }
+
+    .popup__text > {
+        
+        p {
+            font-size: 16px;
+        }
+    }
+
+    .education-header {
+        h1 {
+            font-size: 4.2rem;
+        }
+    }
+
+    .educ-ex {
+    
+    .educ-img {
+        
+        height: 250px;
+        
+        }
+    }
+    
+    
+}
+
+
+
+@media only screen and (min-width: 1024px) {
+    .popup-inner {
+
+        width: 70%;
+        flex-direction: row;
+        padding-right: 40px;
+         
+        
+    }
+
+    .popup__photo {
+        height: auto;
+        width: 100%;
+        
+    }
+
+    .popup__text {
+        text-align: center;
+        // display: flex;
+    }
+
+    .educ-ex {
+    
+        .educ-img {
+            
+            height: 400px;
+            
+            }
+        }
+}
+
+@media only screen and (min-width: 1440px) {
+    .carousel {                
+        
+        .carousel-item {
+            width: 250px !important;
+            height: 250px !important;
+            
+        }    
+        
+        .fas {
+            font-size: 150px;
+            padding-bottom: 20px;
+            color: black;
+        }
+    
+        h4 {
+            color: black;
+            font-size: 35px;
+        }
+    
+    }
+    
+    .popup-inner {
+
+        width: 60%;
+        flex-direction: row;
+        padding-right: 40px;
+              
+        
+    }
+
+    .popup__photo {
+        height: 100%;
+        width: auto;
+        
+    }
+
+    .popup__text {
+        width: 60%;
+        text-align: center;
+    }
+
+    
 }
 
 
