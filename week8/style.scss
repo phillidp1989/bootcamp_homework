@@ -15,7 +15,6 @@ $contrastcolour: #45F0DF;
 // Main css styling
 
 
-
 html, body {
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
@@ -58,6 +57,11 @@ html, body {
 
 .sidenav {
     width: 250px !important;
+
+    li {
+        
+        border-bottom: 2px $contrastcolour groove;
+    }
 }
 
 #details {
@@ -87,6 +91,8 @@ html, body {
     text-align: center;
 }
 
+// About Me Section
+
 .about-me-row {
 
     background-color: $secondarycolour;
@@ -104,11 +110,8 @@ html, body {
 }
 
 
-
 #brand-statement {
-    // background-image: url(https://ak.picdn.net/shutterstock/videos/1012349138/thumb/1.jpg);
-    // background-repeat: no-repeat;
-    // background-size: cover;
+    
     min-height: 450px;
     background-position: center;
     color: black;
@@ -124,6 +127,8 @@ html, body {
     line-height: 2rem;
     font-weight: 500;
 }
+
+// Portfolio section
 
 .heading {
     background-color: $tertiarycolour;
@@ -204,9 +209,7 @@ html, body {
     right: -100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    // max-width: 800px;
-    // max-height: 600px;
+    align-items: center; 
     width: 80%;
     height: 80%;
     background-color: #fff;
@@ -220,26 +223,20 @@ html, body {
     display: flex;
     justify-content: center;
     padding-top: 20px;
-    // align-items: flex-end;
     width: 100%;
-    height: auto;
-    // overflow: hidden;
-    img {
-    //   width: auto;
-    //   height: 100%;
-      max-width: 80%;
+    height: auto;  
+    img {   
+    max-width: 80%;
     max-height: auto;
     }
   }
-  &__text {
-    // display: flex;
+  &__text {    
     flex-direction: column;
     justify-content: center;
     width: 80%;
     height: 100%;
     overflow: visible;
-    text-align: center;
-    // padding: 4rem;
+    text-align: center;    
     h1 {
       font-size: 2rem;
       font-weight: 600;
@@ -400,12 +397,9 @@ html, body {
         height: 250px;
         
         }
-    }
-    
+    }    
     
 }
-
-
 
 @media only screen and (min-width: 1024px) {
     .popup-inner {
@@ -424,8 +418,7 @@ html, body {
     }
 
     .popup__text {
-        text-align: center;
-        // display: flex;
+        text-align: center;        
     }
 
     .educ-ex {
@@ -479,7 +472,6 @@ html, body {
         width: 60%;
         text-align: center;
     }
-
     
 }
 
