@@ -47,6 +47,10 @@ html, body {
   width: 250px !important;
 }
 
+.sidenav li {
+  border-bottom: 2px #45F0DF groove;
+}
+
 #details {
   display: -webkit-box;
   display: -ms-flexbox;
