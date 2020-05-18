@@ -219,6 +219,8 @@ html, body {
           align-items: center;
   width: 80%;
   height: 80%;
+  padding-top: 20px;
+  margin-top: 30px;
   background-color: #fff;
   -webkit-transform: rotate(32deg);
           transform: rotate(32deg);
@@ -292,8 +294,8 @@ html, body {
 
 .popup__close {
   position: absolute;
-  right: 1px;
-  top: 1px;
+  right: 5%;
+  top: 9%;
   width: 3rem;
   height: 3rem;
   font-size: .875rem;
@@ -385,8 +387,11 @@ html, body {
   .popup__photo {
     width: 40%;
   }
-  .popup__text > p {
+  .popup__text p {
     font-size: 16px;
+  }
+  .popup__close {
+    right: 7%;
   }
   .education-header h1 {
     font-size: 4.2rem;
@@ -412,6 +417,9 @@ html, body {
   .popup__text {
     text-align: center;
   }
+  .popup__close {
+    right: 13%;
+  }
   .educ-ex .educ-img {
     height: 400px;
   }
@@ -432,7 +440,6 @@ html, body {
     font-size: 35px;
   }
   .popup-inner {
-    width: 60%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;

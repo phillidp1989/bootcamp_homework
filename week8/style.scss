@@ -35,6 +35,8 @@ html, body {
     background-color: #111D4A !important;
 }
 
+// Home section
+
 #home {
     display: flex;
     flex-wrap: wrap;    
@@ -212,6 +214,8 @@ html, body {
     align-items: center; 
     width: 80%;
     height: 80%;
+    padding-top: 20px;
+    margin-top: 30px;
     background-color: #fff;
     transform: rotate(32deg);
     transition: .64s ease-in-out;
@@ -266,8 +270,8 @@ html, body {
   }
   &__close {
     position: absolute;
-    right: 1px;
-    top: 1px;
+    right: 5%;
+    top: 9%;
     width: 3rem;
     height: 3rem;
     font-size: .875rem;
@@ -377,11 +381,15 @@ html, body {
         width: 40%;        
     }
 
-    .popup__text > {
+    .popup__text {
         
         p {
             font-size: 16px;
         }
+    }
+
+    .popup__close {
+        right: 7%;
     }
 
     .education-header {
@@ -421,6 +429,10 @@ html, body {
         text-align: center;        
     }
 
+    .popup__close {
+        right: 13%;
+    }
+
     .educ-ex {
     
         .educ-img {
@@ -455,7 +467,7 @@ html, body {
     
     .popup-inner {
 
-        width: 60%;
+        
         flex-direction: row;
         padding-right: 40px;
               
@@ -472,6 +484,7 @@ html, body {
         width: 60%;
         text-align: center;
     }
+    
     
 }
 
