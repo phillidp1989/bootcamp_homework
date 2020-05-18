@@ -299,11 +299,11 @@ html, body {
   width: 3rem;
   height: 3rem;
   font-size: .875rem;
-  font-weight: 300;
+  font-weight: bold;
   border-radius: 100%;
-  background-color: #0A0A0A;
+  background-color: #45F0DF;
   z-index: 4;
-  color: #fff;
+  color: black;
   line-height: 3rem;
   text-align: center;
   cursor: pointer;
