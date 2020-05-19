@@ -84,6 +84,11 @@ html, body {
   text-align: center;
 }
 
+.buttons {
+  padding-top: 15px;
+  text-align: center;
+}
+
 .about-me-row {
   background-color: #8380B6;
   margin-bottom: 0 !important;
