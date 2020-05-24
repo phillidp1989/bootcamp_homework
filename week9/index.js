@@ -164,13 +164,13 @@ async function readMeGenerator() {
 
 
         if (userResponse.screenshotYN === "Yes") {
-            let readMe = `# ${userResponse.project}\n\n## Description:\n${userResponse.description}\n\n## Table of Contents:\nBadges\nVisuals\nInstallation\nUsage\nLicense\nContributing\nTesting\nContact\n\n## Badges:\n![Github]${shieldsLanguages}\n\n## Visuals:\n![screenshot](${userResponse.screenshot})\n\n## Installation:\n${userResponse.installation}\n\n## Usage:\n${userResponse.usage}\n\n## License:\n![Github]${shieldsLicense}\n\n## Contributing:\n${userResponse.contribution}\n\n## Testing:\n${userResponse.testing}\n\n## Author:\nName: ${userResponse.name}\nGithub Username: ${usernameQuestion.username}\nGithub Email Address: ${data.email}\nGithub Profile Picture: <img src="${data.avatar_url}">`;
+            let readMe = `# ${userResponse.project}\n\n## Description:\n${userResponse.description}\n\n## Table of Contents:\n\nBadges\n\nVisuals\n\nInstallation\n\nUsage\n\nLicense\n\nContributing\n\nTesting\n\nContact\n\n## Badges:\n![Github]${shieldsLanguages}\n\n## Visuals:\n![screenshot](${userResponse.screenshot})\n\n## Installation:\n${userResponse.installation}\n\n## Usage:\n${userResponse.usage}\n\n## License:\n![Github]${shieldsLicense}\n\n## Contributing:\n${userResponse.contribution}\n\n## Testing:\n${userResponse.testing}\n\n## Author:\nName: ${userResponse.name}\n\nGithub Username: ${usernameQuestion.username}\n\nGithub Email Address: ${data.email}\n\n<img src="${data.avatar_url}">`;
 
             writeFileAsync("README.md", readMe).then(function () {
                 console.log("Your README file has been successfully created");
             })
         } else {
-            let readMe = `# ${userResponse.project}\n\n## Description:\n${userResponse.description}\n\n##Table of Contents:\nBadges\nInstallation\nUsage\nLicense\nContributing\nTesting\nContact\n\n## Badges:\n![Github]${shieldsLanguages}\n\n## Installation:\n${userResponse.installation}\n\n## Usage:\n${userResponse.usage}\n\n## License:\n![Github]${shieldsLicense}\n\n## Contributing:\n${userResponse.contribution}\n\n## Testing:\n${userResponse.testing}\n\n## Author:\nName: ${userResponse.name}\nGithub Username: ${usernameQuestion.username}\nGithub Email Address: ${data.email}\nGithub Profile Picture: <img src="${data.avatar_url}">`;
+            let readMe = `# ${userResponse.project}\n\n## Description:\n${userResponse.description}\n\n##Table of Contents:\n\nBadges\n\nInstallation\n\nUsage\n\nLicense\n\nContributing\n\nTesting\n\nContact\n\n## Badges:\n![Github]${shieldsLanguages}\n\n## Installation:\n${userResponse.installation}\n\n## Usage:\n${userResponse.usage}\n\n## License:\n![Github]${shieldsLicense}\n\n## Contributing:\n${userResponse.contribution}\n\n## Testing:\n${userResponse.testing}\n\n## Author:\nName: ${userResponse.name}\n\nGithub Username: ${usernameQuestion.username}\n\nGithub Email Address: ${data.email}\n\n<img src="${data.avatar_url}">`;
 
             writeFileAsync("README.md", readMe).then(function () {
                 console.log("Your README file has been successfully created");
