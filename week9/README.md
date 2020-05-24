@@ -14,7 +14,7 @@ Testing
 Contact
 
 ## Badges:
-https://img.shields.io/github/languages/top/phillidp1989/bootcamp_homework
+<img src="https://img.shields.io/github/languages/top/phillidp1989/bootcamp_homework">
 
 ## Visuals:
 ![screenshot](https://github.com/phillidp1989/bootcamp_homework/blob/master/week9/assets/command-line.PNG)
