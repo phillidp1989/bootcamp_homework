@@ -25,7 +25,7 @@ This is a command line application run using node.js. The app generates a README
 
 
 ## Visuals:
-![screenshot](https://github.com/phillidp1989/bootcamp_homework/blob/master/week9/assets/Demo.gif)
+![screenshot](https://github.com/phillidp1989/bootcamp_homework/blob/master/week9/assets/Node%20demonstration.gif)
 
 ## Installation:
 Download code from GitHub repository and navigate to folder destination in the terminal. Enter 'npm install' in the command line and press enter.
