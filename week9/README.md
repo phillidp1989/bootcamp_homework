@@ -2,50 +2,50 @@
 
 ## Table of Contents:
 
-1. [Description](#1.-description)
+1. [Description](#description)
 
-2. Visuals
+2. [Visuals](#visuals)
 
-3. Installation
+3. [Installation](#installation)
 
-4. Usage
+4. [Usage](#usage)
 
-5. License
+5. [License](#license)
 
-6. Contributing
+6. [Contributing](#contributing)
 
-7. Testing
+7. [Testing](#testing)
 
-8. Languages
+8. [Languages](#labguages)
 
-9. Author
+9. [Author](#author)
 
-## 1. Description:
+## Description:
 This is a command line application run using node.js. The app generates a README.md file using API data and responses from the user regarding their project.
 
 
-## 2. Visuals:
+## Visuals:
 ![screenshot](https://github.com/phillidp1989/bootcamp_homework/blob/master/week9/assets/command-line.PNG)
 
-## 3. Installation:
+## Installation:
 Download code from GitHub repository and navigate to folder destination in the terminal. Enter 'npm install' in the command line and press enter.
 
-## 4. Usage:
+## Usage:
 The user must navigate to the directory containing the application code in their terminal. Enter 'node index.js' in the command line and press enter to initialize the application. The user will then need to complete all of the questions and once complete, a new README.md file will have been generated in the route directory and a confirmation message printed to the terminal.
 
-## 5. License:
+## License:
 <img src="https://img.shields.io/github/license/phillidp1989/bootcamp_homework?logoColor=%23C2CAE8">
 
-## 6. Contributing:
+## Contributing:
 No contributions required
 
-## 7. Testing:
+## Testing:
 No testing tools have been used on this project
 
-## 8. Languages:
+## Languages:
 <img src="https://img.shields.io/github/languages/top/phillidp1989/bootcamp_homework">
 
-## 9. Author:
+## Author:
 Name: Dan Phillips
 
 Github Username: phillidp1989
