@@ -20,6 +20,26 @@ const validAnswer = input => {
     return true;
 }
 
+// Validation of screenshot url using regex
+
+const urlValidator = url => {
+    const urlRegex = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+    if (urlRegex.test(url) === false) {
+        return "Please provide a valid url to your screenshot or gif";
+    }
+    return true;
+}
+
+// Validation of email using regex
+
+const emailValidator = email => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (regex.test(email) === false) {
+        return "Please enter a valid email address";
+    }
+    return true;
+}
+
 // Function to generate README.md file based on user responses
 
 async function readMeGenerator() {
@@ -108,7 +128,7 @@ async function readMeGenerator() {
                 name: "screenshot",
                 message: "Provide a link to a screenshot of your application",
                 when: (userResponse) => userResponse.screenshotYN === "Yes",
-                validate: validAnswer
+                validate: urlValidator
             },
 
 
@@ -135,30 +155,7 @@ async function readMeGenerator() {
 
         ]);
 
-        // Validation of email using regex
-
-        const emailValidator = email => {
-            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (regex.test(email) === false) {
-                return "Please enter a valid email address";
-            }
-            return true;
-        }
-
-        if (!data.email) {
-            const email = await inquirer.prompt({
-                type: "input",
-                name: "contact",
-                message: "Provide a contact email address",
-                validate: emailValidator
-            });
-            data.email = email.contact;
-        };
-
-        // Declaring variable to hold Shields.io API url
-
-        const shieldsLanguages = `https://img.shields.io/github/languages/top/${usernameQuestion.username}/${repoQuestion.repo}`;
-        const shieldsLicense = `https://img.shields.io/github/license/${usernameQuestion.username}/${repoQuestion.repo}?logoColor=%23C2CAE8`
+        // Conditional prompt invoked if the user has chosen a filename which already exists
 
         if (fs.existsSync(`./${userResponse.filename}.md`)) {
             const { updateFileName } = await inquirer.prompt({
@@ -169,6 +166,24 @@ async function readMeGenerator() {
             });
             userResponse.filename = updateFileName;
         };
+
+        // Follow up question which is only invoked if email address is not available from GitHub API response
+
+        if (!data.email) {
+            const email = await inquirer.prompt({
+                type: "input",
+                name: "contact",
+                message: "Your email address is not available via GitHub, please provide a contact email address",
+                validate: emailValidator
+            });
+            data.email = email.contact;
+        };
+
+        // Declaring variable to hold Shields.io API url
+
+        const shieldsLanguages = `https://img.shields.io/github/languages/top/${usernameQuestion.username}/${repoQuestion.repo}`;
+        const shieldsLicense = `https://img.shields.io/github/license/${usernameQuestion.username}/${repoQuestion.repo}?logoColor=%23C2CAE8`
+       
 
         // Declaring variables to hold the content of the README.md file to be generated - this differs depending on whether the user wants to add a screenshot
 
