@@ -4,41 +4,13 @@ const axios = require("axios");
 const fs = require("fs");
 const inquirer = require("inquirer");
 const util = require("util");
+const validation = require("./validation");
 
 
 // Creating Promise-based version of fs modules
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
-
-// Function to run if user does not provide a valid response to an input prompt
-
-const validAnswer = input => {
-    if (input === "") {
-        return "Please provide a valid response"
-    }
-    return true;
-}
-
-// Validation of screenshot url using regex
-
-const urlValidator = url => {
-    const urlRegex = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-    if (urlRegex.test(url) === false) {
-        return "Please provide a valid url to your screenshot or gif";
-    }
-    return true;
-}
-
-// Validation of email using regex
-
-const emailValidator = email => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (regex.test(email) === false) {
-        return "Please enter a valid email address";
-    }
-    return true;
-}
 
 // Function to generate README.md file based on user responses
 
@@ -66,7 +38,7 @@ async function readMeGenerator() {
             type: "input",
             name: "username",
             message: "What is your GitHub username?",
-            validate: validAnswer
+            validate: validation.validAnswer
         });
 
         // Declaring variables to hold Github API urls based on user response
@@ -98,7 +70,7 @@ async function readMeGenerator() {
                 type: "input",
                 name: "description",
                 message: "Provide a description of your project",
-                validate: validAnswer
+                validate: validation.validAnswer
 
             },
 
@@ -106,14 +78,14 @@ async function readMeGenerator() {
                 type: "input",
                 name: "installation",
                 message: "Provide details on how this applicaton is installed",
-                validate: validAnswer
+                validate: validation.validAnswer
             },
 
             {
                 type: "input",
                 name: "usage",
                 message: "Provide information on usage of this application",
-                validate: validAnswer
+                validate: validation.validAnswer
             },
 
             {
@@ -128,7 +100,7 @@ async function readMeGenerator() {
                 name: "screenshot",
                 message: "Provide a link to a screenshot of your application",
                 when: (userResponse) => userResponse.screenshotYN === "Yes",
-                validate: urlValidator
+                validate: validation.urlValidator
             },
 
 
@@ -136,21 +108,21 @@ async function readMeGenerator() {
                 type: "input",
                 name: "contribution",
                 message: "State if you are open to contributions and what your requirements are for accepting them",
-                validate: validAnswer
+                validate: validation.validAnswer
             },
 
             {
                 type: "input",
                 name: "testing",
                 message: "Provide details on testing applied to your project",
-                validate: validAnswer
+                validate: validation.validAnswer
             },
 
             {
                 type: "input",
                 name: "filename",
                 message: "Provide a filename for your new README document",
-                validate: validAnswer
+                validate: validation.validAnswer
             }
 
         ]);
@@ -162,7 +134,7 @@ async function readMeGenerator() {
                 type: "input",
                 message: `A file named ${userResponse.filename} already exists within this directory. Please provide an alternative filename so that the original document is not overwritten`,
                 name: "updateFileName",
-                validate: validAnswer
+                validate: validation.validAnswer
             });
             userResponse.filename = updateFileName;
         };
@@ -174,7 +146,7 @@ async function readMeGenerator() {
                 type: "input",
                 name: "contact",
                 message: "Your email address is not available via GitHub, please provide a contact email address",
-                validate: emailValidator
+                validate: validation.emailValidator
             });
             data.email = email.contact;
         };
