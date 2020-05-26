@@ -2,7 +2,7 @@
 
 ## Table of Contents:
 
-1. [Description](#description)
+1. [Description](#1.-description)
 
 2. Visuals
 
@@ -20,7 +20,7 @@
 
 9. Author
 
-## Description:
+## 1. Description:
 This is a command line application run using node.js. The app generates a README.md file using API data and responses from the user regarding their project.
 
 
