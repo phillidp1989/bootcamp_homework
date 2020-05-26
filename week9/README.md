@@ -20,7 +20,7 @@
 
 9. Author
 
-## 1. Description:
+## Description:
 This is a command line application run using node.js. The app generates a README.md file using API data and responses from the user regarding their project.
 
 
