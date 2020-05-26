@@ -2,7 +2,7 @@
 
 ## Table of Contents:
 
-1. Description
+1. [Description](#description)
 
 2. Visuals
 

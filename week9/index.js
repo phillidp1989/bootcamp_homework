@@ -13,7 +13,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 // Function to run if user does not provide a valid response to an input prompt
 
-const validAnswer = async (input) => {
+const validAnswer = input => {
     if (input === "") {
         return "Please provide a valid response"
     }
@@ -30,15 +30,15 @@ async function readMeGenerator() {
 
         const proceed = await inquirer.prompt({
             type: "list",
-            name: "proceed",
+            name: "continue",
             message: "Welcome to the README generator. Would you like to proceed?",
             choices: ["Yes", "No"]
-        })
+        });
 
-        if (proceed.proceed === "No") {
+        if (proceed.continue === "No") {
             console.log("The README generator has been stopped");
             return;
-        }
+        };
 
         // Variable to hold inquirer prompt asking user for their GitHub username. An axios call will be made after this question has been answered
 
@@ -47,21 +47,19 @@ async function readMeGenerator() {
             name: "username",
             message: "What is your GitHub username?",
             validate: validAnswer
-        })
+        });
 
         // Declaring variables to hold Github API urls based on user response
 
         const gitHubAPI = `https://api.github.com/users/${usernameQuestion.username}`;
-        const queryUrl = `https://api.github.com/users/${usernameQuestion.username}/repos?per_page=100`
+        const queryUrl = `https://api.github.com/users/${usernameQuestion.username}/repos?per_page=100`;
 
 
         // Axios calls to GitHub API using deconstruction to hold the data in variable called 'data'
 
         const { data } = await axios.get(gitHubAPI);
         const repos = await axios.get(queryUrl);
-        const repoNames = repos.data.map(function (repo) {
-            return repo.name;
-        })
+        const repoNames = repos.data.map(repo => repo.name);
 
         // GitHub repos listed for user to select
 
@@ -70,25 +68,11 @@ async function readMeGenerator() {
             name: "repo",
             message: "What is the name of the GitHub repo that holds your project?",
             choices: repoNames
-        })
+        });
 
         // Inquirer questions to create additional README content
 
         const userResponse = await inquirer.prompt([
-            {
-                type: "input",
-                name: "name",
-                message: "What is your name?",
-                validate: validAnswer
-            },
-
-            {
-                type: "input",
-                name: "project",
-                message: "What is the name of your project?",
-                validate: validAnswer
-
-            },
 
             {
                 type: "input",
@@ -142,47 +126,72 @@ async function readMeGenerator() {
                 validate: validAnswer
             },
 
+            {
+                type: "input",
+                name: "filename",
+                message: "Provide a filename for your new README document",
+                validate: validAnswer
+            }
+
         ]);
+
+        // Validation of email using regex
+
+        const emailValidator = email => {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (regex.test(email) === false) {
+                return "Please enter a valid email address";
+            }
+            return true;
+        }
 
         if (!data.email) {
             const email = await inquirer.prompt({
                 type: "input",
-                name: "email",
+                name: "contact",
                 message: "Provide a contact email address",
-                validate: validAnswer
-            })
-            data.email = email.email;
-        }
+                validate: emailValidator
+            });
+            data.email = email.contact;
+        };
 
         // Declaring variable to hold Shields.io API url
 
         const shieldsLanguages = `https://img.shields.io/github/languages/top/${usernameQuestion.username}/${repoQuestion.repo}`;
         const shieldsLicense = `https://img.shields.io/github/license/${usernameQuestion.username}/${repoQuestion.repo}?logoColor=%23C2CAE8`
 
+        if (fs.existsSync(`./${userResponse.filename}.md`)) {
+            const { updateFileName } = await inquirer.prompt({
+                type: "input",
+                message: `A file named ${userResponse.filename} already exists within this directory. Please provide an alternative filename so that the original document is not overwritten`,
+                name: "updateFileName",
+                validate: validAnswer
+            });
+            userResponse.filename = updateFileName;
+        };
 
         // Declaring variables to hold the content of the README.md file to be generated - this differs depending on whether the user wants to add a screenshot
 
 
         if (userResponse.screenshotYN === "Yes") {
-            let readMe = `# ${userResponse.project}\n\n## Table of Contents:\n\n1. Description\n\n2. Visuals\n\n3. Installation\n\n4. Usage\n\n5. License\n\n6. Contributing\n\n7. Testing\n\n8. Languages\n\n 9. Author\n\n## 1. Description:\n${userResponse.description}\n\n## 2. Visuals:\n![screenshot](${userResponse.screenshot})\n\n## 3. Installation:\n${userResponse.installation}\n\n## 4. Usage:\n${userResponse.usage}\n\n## 5. License:\n<img src="${shieldsLicense}">\n\n## 6. Contributing:\n${userResponse.contribution}\n\n## 7. Testing:\n${userResponse.testing}\n\n## 8. Languages:\n<img src="${shieldsLanguages}">\n\n## 9. Author:\nName: ${userResponse.name}\n\nGithub Username: ${usernameQuestion.username}\n\nGithub Email Address: ${data.email}\n\n<img src="${data.avatar_url}">`;
+            const readMe = `# ${repoQuestion.repo}\n\n## Table of Contents:\n\n1. Description\n\n2. Visuals\n\n3. Installation\n\n4. Usage\n\n5. License\n\n6. Contributing\n\n7. Testing\n\n8. Languages\n\n 9. Author\n\n## 1. Description:\n${userResponse.description}\n\n## 2. Visuals:\n![screenshot](${userResponse.screenshot})\n\n## 3. Installation:\n${userResponse.installation}\n\n## 4. Usage:\n${userResponse.usage}\n\n## 5. License:\n<img src="${shieldsLicense}">\n\n## 6. Contributing:\n${userResponse.contribution}\n\n## 7. Testing:\n${userResponse.testing}\n\n## 8. Languages:\n<img src="${shieldsLanguages}">\n\n## 9. Author:\nName: ${data.name}\n\nGithub Username: ${usernameQuestion.username}\n\nGithub Email Address: ${data.email}\n\n<img src="${data.avatar_url}">`;
 
-            writeFileAsync("README.md", readMe).then(function () {
-                console.log("Your README file has been successfully created");
-            })
+            await writeFileAsync(`${userResponse.filename}.md`, readMe);
+            console.log("Your README file has been successfully created");
+
         } else {
-            let readMe = `# ${userResponse.project}\n\n## Table of Contents:\n\n1. Description\n\n2. Installation\n\n3. Usage\n\n4. License\n\n5. Contributing\n\n6. Testing\n\n7. Languages\n\n 8. Author\n\n## 1. Description:\n${userResponse.description}\n\n## 2. Installation:\n${userResponse.installation}\n\n## 3. Usage:\n${userResponse.usage}\n\n## 4. License:\n<img src="${shieldsLicense}">\n\n## 5. Contributing:\n${userResponse.contribution}\n\n## 6. Testing:\n${userResponse.testing}\n\n## Languages:\n!<img src="${shieldsLanguages}">\n\n## 7. Author:\nName: ${userResponse.name}\n\nGithub Username: ${usernameQuestion.username}\n\nGithub Email Address: ${data.email}\n\n<img src="${data.avatar_url}">`;
+            const readMe = `# ${repoQuestion.repo}\n\n## Table of Contents:\n\n1. Description\n\n2. Installation\n\n3. Usage\n\n4. License\n\n5. Contributing\n\n6. Testing\n\n7. Languages\n\n 8. Author\n\n## 1. Description:\n${userResponse.description}\n\n## 2. Installation:\n${userResponse.installation}\n\n## 3. Usage:\n${userResponse.usage}\n\n## 4. License:\n<img src="${shieldsLicense}">\n\n## 5. Contributing:\n${userResponse.contribution}\n\n## 6. Testing:\n${userResponse.testing}\n\n## Languages:\n!<img src="${shieldsLanguages}">\n\n## 7. Author:\nName: ${data.name}\n\nGithub Username: ${usernameQuestion.username}\n\nGithub Email Address: ${data.email}\n\n<img src="${data.avatar_url}">`;
 
-            writeFileAsync("README.md", readMe).then(function () {
-                console.log("Your README file has been successfully created");
-            })
-        }
+            await writeFileAsync(`${userResponse.filename}.md`, readMe)
+            console.log("Your README file has been successfully created");
+        };
 
         // Catch block to handle errors
 
     } catch (error) {
         console.log(error);
-    }
-}
+    };
+};
 
 // Call main readMeGenerator function
 
