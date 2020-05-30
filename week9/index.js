@@ -30,7 +30,7 @@ async function readMeGenerator() {
         if (proceed.continue === "No") {
             console.log("The README generator has been stopped");
             return;
-        };
+        }
 
         // Variable to hold inquirer prompt asking user for their GitHub username. An axios call will be made after this question has been answered
 
@@ -137,7 +137,7 @@ async function readMeGenerator() {
                 validate: validation.validAnswer
             });
             userResponse.filename = updateFileName;
-        };
+        }
 
         // Follow up question which is only invoked if email address is not available from GitHub API response
 
@@ -149,12 +149,12 @@ async function readMeGenerator() {
                 validate: validation.emailValidator
             });
             data.email = email.contact;
-        };
+        }
 
         // Declaring variable to hold Shields.io API url
 
         const shieldsLanguages = `https://img.shields.io/github/languages/top/${usernameQuestion.username}/${repoQuestion.repo}`;
-        const shieldsLicense = `https://img.shields.io/github/license/${usernameQuestion.username}/${repoQuestion.repo}?logoColor=%23C2CAE8`
+        const shieldsLicense = `https://img.shields.io/github/license/${usernameQuestion.username}/${repoQuestion.repo}?logoColor=%23C2CAE8`;
        
 
         // Declaring variables to hold the content of the README.md file to be generated - this differs depending on whether the user wants to add a screenshot
@@ -169,9 +169,9 @@ async function readMeGenerator() {
         } else {
             const readMe = `# ${repoQuestion.repo}\n\n## Table of Contents:\n\n1. [Description](#description)\n\n2. [Installation](#installation)\n\n3. [Usage](#usage)\n\n4. [License](#license)\n\n5. [Contributing](#contributing)\n\n6. [Testing](#testing)\n\n7. [Languages](#languages)\n\n8. [Author](#author)\n\n## Description:\n${userResponse.description}\n\n## Installation:\n${userResponse.installation}\n\n## Usage:\n${userResponse.usage}\n\n## License:\n<img src="${shieldsLicense}">\n\n## Contributing:\n${userResponse.contribution}\n\n## Testing:\n${userResponse.testing}\n\n## Languages:\n!<img src="${shieldsLanguages}">\n\n## Author:\nName: ${data.name}\n\nGithub Username: ${usernameQuestion.username}\n\nGithub Email Address: ${data.email}\n\n<img src="${data.avatar_url}">`;
 
-            await writeFileAsync(`${userResponse.filename}.md`, readMe)
+            await writeFileAsync(`${userResponse.filename}.md`, readMe);
             console.log("Your README file has been successfully created");
-        };
+        }
 
         // Catch block to handle errors
 
