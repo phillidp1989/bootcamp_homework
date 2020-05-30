@@ -33,13 +33,9 @@ $(document).ready(function () {
         $("#searchField").val(searchHistory[searchHistory.length - 1]);
         currentWeather();
         forecast();
-        $(".weatherContainer").removeClass("hide");
-        $("#searchField").val("");
+        $(".weatherContainer").removeClass("hide");        
 
     }
-
-
-
 
 
 
@@ -274,11 +270,10 @@ $(document).ready(function () {
             $(".weatherContainer").removeClass("hide");
             $("#searchField").val($(this).text());
             currentWeather();
-            forecast();
-            $("#searchField").val("");
-        })
+            forecast();            
+        });
 
-    }
+    };
 
     renderSearchHistory();
 
