@@ -28,7 +28,7 @@ const emailValidator = email => {
 }
 
 module.exports = {
-    validAnswer: validAnswer,
-    urlValidator: urlValidator,
-    emailValidator: emailValidator
+    validAnswer,
+    urlValidator,
+    emailValidator
 }
